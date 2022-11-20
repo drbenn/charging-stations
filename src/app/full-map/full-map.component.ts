@@ -49,7 +49,7 @@ export class FullMapComponent implements OnInit {
 
   initMap() {
     // L.Map.addInitHook('addHandler', 'gestureHandling', GestureHandling);
-    // tile providers:
+    // tile providers: https://leaflet-extras.github.io/leaflet-providers/preview/
     //OpenStreetMap.HOT
     const openStHot = 'https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png'
     // Stadia.AlidadeSmoothDark:
@@ -58,7 +58,7 @@ export class FullMapComponent implements OnInit {
     const cartoDark = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
     // NASAGIBS.ViirsEarthAtNight2012
     const nasaNight = 'https://map1.vis.earthdata.nasa.gov/wmts-webmerc/VIIRS_CityLights_2012/default/{time}/{tilematrixset}{maxZoom}/{z}/{y}/{x}.{format}'
-    const tileLayer = L.tileLayer(stadiaDark);
+    const tileLayer = L.tileLayer(cartoDark);
 
     const mapOptions = {
     zoomControl: true,
@@ -68,15 +68,15 @@ export class FullMapComponent implements OnInit {
     };
     // init map
     let myMap = L.map(this.mapElement.nativeElement, mapOptions).setView([40,-97],4.5);
-    this.addLeafletControls(myMap);
+    // this.addLeafletControls(myMap);
 
     this._map =myMap;
     }
 
-    addLeafletControls(map: L.Map) {
-      const zoom = L.control.zoom({
-      position: 'bottomleft'}).addTo(map);
-    }
+    // addLeafletControls(map: L.Map) {
+    //   const zoom = L.control.zoom({
+    //   position: 'bottomleft'}).addTo(map);
+    // }
 
     initSubscriptions() {
 

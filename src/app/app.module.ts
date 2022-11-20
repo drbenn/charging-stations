@@ -9,12 +9,14 @@ import { FullMapComponent } from './full-map/full-map.component';
 import { NgxsModule } from '@ngxs/store';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { AppState } from './shared/state/appState.state';
+import { NavComponent } from './nav/nav.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    FullMapComponent
+    FullMapComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --dark-bg:#000d23;
+  --accent-bg:#0f84a5;
+  --accent-1:#90e1ff;
+  --accent-2:#f89de1;
+  --accent-3:#77df94;
+}
+
+body {
+  margin: 0 auto ;
+  padding: 0;
+  // font-family: 'Barlow Condensed', sans-serif;
+  font-family: 'Dosis', sans-serif;
+  // font-family: 'Titillium Web', sans-serif;
+}

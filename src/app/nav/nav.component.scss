@@ -1,0 +1,25 @@
+.nav-container {
+  // border: 1px solid red;
+  // background-color: rgb(12, 22, 21);
+  background: linear-gradient(165deg, var(--dark-bg) 88%, var(--accent-bg) 100%);
+  color: White;
+  font-weight: 400;
+  font-size: 1rem;
+  text-shadow: 1px 1px 5px #4a034a;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 2vw;
+  height: 4vh;
+}
+
+ul {
+  display: flex;
+  list-style: none;
+}
+
+li {
+  display: inline;
+}
