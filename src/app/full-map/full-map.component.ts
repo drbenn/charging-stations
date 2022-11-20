@@ -190,24 +190,26 @@ export class FullMapComponent implements OnInit {
     })
 
     // Or use icon image
-    // let imgIcon = L.icon({
-    // iconUrl: '../location/icon.png',
-    // shadowSize: [50,50],
-    // iconAnchor: [22,94],
-    // shadowAnchor: [4,62],
-    // popupAnchor: [-3, -76]
-    // })
+    // iconsize hieght is 1.617 ratio of width
+    let imgIcon = L.icon({
+    iconUrl: '../../assets/pin-point.png',
+    iconSize:[15,24.25],
+    shadowSize: [50,50],
+    iconAnchor: [22,94],
+    shadowAnchor: [4,62],
+    popupAnchor: [-3, -76]
+    })
 
     const popupOptions = {className: "customPopup"};
     const tooltipTemplate = this.mapService.createTooltip(station);
 
     // tooltip bound to basic marker
-    marker.bindPopup(tooltipTemplate, popupOptions);
-    return marker
+    // marker.bindPopup(tooltipTemplate, popupOptions);
+    // return marker
 
     // tooltip bounds to icon img marker
-    // const iconMarker = L.marker([coords[0], coords[1]], {icon:imgIcon}).bindPopup(tooltipTemplate, popupOptions);
-    // return iconMarker;
+    const iconMarker = L.marker([coords[0], coords[1]], {icon:imgIcon}).bindPopup(tooltipTemplate, popupOptions);
+    return iconMarker;
     }
 
     private createClusterIcon() {
