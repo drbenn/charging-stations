@@ -98,9 +98,9 @@ export class FullMapComponent implements OnInit {
 
     // Init cluster and cluster settings
     let clusterStation = L.markerClusterGroup({
-    maxClusterRadius: 50,
-    disableClusteringAtZoom: 12,
-    // iconCreateFunction: this.createClusterIcon()
+    maxClusterRadius: 65,
+    disableClusteringAtZoom: 10,
+    iconCreateFunction: this.createClusterIcon()
     });
 
     _stations.forEach((station) => {
@@ -195,7 +195,7 @@ export class FullMapComponent implements OnInit {
     iconUrl: '../../assets/pin-point.png',
     iconSize:[15,24.25],
     shadowSize: [50,50],
-    iconAnchor: [22,94],
+    iconAnchor: [0,40],
     shadowAnchor: [4,62],
     popupAnchor: [-3, -76]
     })
@@ -216,9 +216,9 @@ export class FullMapComponent implements OnInit {
     return (cluster) => {
     // bc encapsulation.none cancahnge in component stylesheet w .leaflet-div-icon
     let template = `
-    <b>
+    <div style="transform: translate(-8px,-5px); border: 1px solid transparent; width: 25px; text-align: center;">
     ${cluster.getChildCount()}
-    </b>
+    </div>
     `;
     return L.divIcon({ html: template });
     };
