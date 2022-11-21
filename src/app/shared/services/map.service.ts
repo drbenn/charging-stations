@@ -24,8 +24,13 @@ export class MapService {
     let stationTooltip = document.createElement('div');
     stationTooltip.setAttribute('style' , 'width: 300px; transform: translateX(-20px);')
     stationTooltip.innerHTML = `
-    <div>
-    ..stuff
+    <div class="tooltip-container">
+     <div>Name: ${data.name}</div>
+     <div>Location: ${data.address}, ${data.city}, ${data.state} ${data.zip}</div>
+     <div> Connections: ${data.connectorTypes}</div>
+     <div>${data.accessType} - accessible ${data.accessTime}</div>
+     <div>Owner: ${data.owner}</div>
+     <div>Network: ${data.network}</div>
     </div>
     `;
     return stationTooltip;

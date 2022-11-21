@@ -11,12 +11,13 @@
   // font-family: 'Dosis', sans-serif;
   // font-family: 'Titillium Web', sans-serif;
   font-family: 'Barlow Condensed', sans-serif;;
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: 200;
   border: 2px solid var(--map-tooltip-border);
   border-radius: 2px;
-  width: 20rem;
-  height: 10rem;
+  width: fit-content;
+  height: fit-content;
+  padding:0.8rem 1.5rem 0.5rem 1.5rem;
   transform: translate(0rem, 2.5rem);
 }
 
