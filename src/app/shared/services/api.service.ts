@@ -21,8 +21,8 @@ export class ApiService {
   // Use this and update
   //https://developer.nrel.gov/api/alt-fuel-stations/v1.json?api_key=DEMO_KEY&fuel_type=ELEC,BD,HY&limit=all
 
-  callApi() {
-    return this.httpClient.get('https://api.openbrewerydb.org/breweries?per_page=10');
-  }
+  // callApi() {
+  //   return this.httpClient.get('https://api.openbrewerydb.org/breweries?per_page=10');
+  // }
 
 }

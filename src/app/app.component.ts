@@ -17,20 +17,20 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): any {
     let jsonData = this.dataService.getJsonData();
-    console.log(jsonData);
+    // console.log(jsonData);
 
 
-    this.apiData$ = this.apiService.callApi()
-          .pipe(tap((data) => {
-       console.table(data);
-        this.apiData = data
-      }));
+    // this.apiData$ = this.apiService.callApi()
+    //       .pipe(tap((data) => {
+    //    console.table(data);
+    //     this.apiData = data
+    //   }));
 
     // works in html json pipe only
     // pipe(take(1)) will take only once and then close subscription instead of leaving subscription open w/ memory leak.
     // BUT, this only hits the html and is not available in component
-    this.apiService.callApi().pipe(take(1)).subscribe((data)=> {
-      this.apiData = data;
-    });
+    // this.apiService.callApi().pipe(take(1)).subscribe((data)=> {
+    //   this.apiData = data;
+    // });
   }
 }

@@ -5,10 +5,26 @@
 }
 
 // leaflet tooltip bg pane
-.leaflet-popup-content-wrapper, .leaflet-popup-tip {
-  background-color: wheat;
-  border-radius: 100px;
-  width: 100px;
+.leaflet-popup-content-wrapper {
+  background-color: var(--map-tooltip-bg);
+  color: var(--map-tooltip-font);
+  // font-family: 'Dosis', sans-serif;
+  // font-family: 'Titillium Web', sans-serif;
+  font-family: 'Barlow Condensed', sans-serif;;
+  font-size: 1.5rem;
+  font-weight: 200;
+  border: 2px solid var(--map-tooltip-border);
+  border-radius: 2px;
+  width: 20rem;
+  height: 10rem;
+  transform: translate(0rem, 2.5rem);
+}
+
+.leaflet-popup-tip {
+  background-color: red;
+  padding: 0;
+  width: 0px;
+  height: 0px;
 }
 
 // .leaflet-container a.leaflet-popup-close-button {

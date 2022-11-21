@@ -20,7 +20,7 @@ export class DataService {
   getJsonData() {
     const jsonFile = '../../../assets/data/stationData.json';
     const jsonData = this.httpClient.get(jsonFile).subscribe((data)=> {
-      console.log(data);
+      // console.log(data);
       this.store.dispatch(new LoadStations(data));
       return data
     })

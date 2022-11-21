@@ -79,8 +79,8 @@ export class FullMapComponent implements OnInit {
     // }
 
     initSubscriptions() {
-
     let mapPoints:any;
+
     const stations$: Observable<any> = this.store.select((state) => state.appState.stations);
     stations$.subscribe((_stations: StationModel[]) => {
 
@@ -103,81 +103,94 @@ export class FullMapComponent implements OnInit {
     iconCreateFunction: this.createClusterIcon()
     });
 
-    _stations.forEach((station) => {
-    let clusterGroup: L.MarkerClusterGroup;
-    clusterGroup = clusterStation.addLayer(this.createStationMarker(station));
-    if (clusterGroup) {
-    this.activeMapPointsArray.push(clusterGroup)
+    if (_stations.length >0) {
+      _stations.forEach((station) => {
+      let clusterGroup: L.MarkerClusterGroup;
+      clusterGroup = clusterStation.addLayer(this.createStationMarker(station));
+      if (clusterGroup) {
+      this.activeMapPointsArray.push(clusterGroup)
+      }
+      });
+      mapPoints = L.layerGroup(this.activeMapPointsArray).addTo(this._map);
     }
-    });
-    mapPoints = L.layerGroup(this.activeMapPointsArray).addTo(this._map);
-
     //If heatmap active and data change, re-render heatmap
-    // if (this._heatmap && this.heatmapActive) {
-    // this.clearHeatmap();
-    // const newHeatArray = this.spawnHeatArray();
-    // this.initHeatmap(newHeatArray);
-    // }
-    // })
+    if (this._heatmap && this.heatmapActive) {
+    this.clearHeatmap();
+    const newHeatArray = this.spawnHeatArray();
+    this.initHeatmap(newHeatArray);
+    }
+    })
 
+    const heatmapToggle$: Observable<boolean> = this.store.select((state) => state.appState.heatMapOn);
+    // heatmapToggle$.subscribe((_heatMapToggle: boolean) =>  this.heatmapActive = _heatMapToggle)
     // let heatmapActive$: Observable<Boolean> = this.store.select((state) => state.appState.mapPageHeatmapActive);
-    // heatmapActive$.subscribe((heatmapActive: boolean) => {
-    // this.heatmapActive = heatmapActive;
-    // const heatArray: [][] = this.spawnHeatArray();
+    heatmapToggle$.subscribe((heatmapToggle: boolean) => {
+      console.log(heatmapToggle);
+
+    this.heatmapActive = heatmapToggle;
+    const heatArray: [][] = this.spawnHeatArray();
 
     // //draws heat on activate
-    // if(heatmapActive) {
-    // this.initHeatmap(heatArray);
-    // }
+    if(heatmapToggle) {
+    this.initHeatmap(heatArray);
+    }
 
     // // removes heatmap after being added to map
-    // if (this._heatmap && !heatmapActive) {
-    // this.clearHeatmap();
-    // }
-    // })
+    if (this._heatmap && !heatmapToggle) {
+    this.clearHeatmap();
+    }
+    })
 
 
-      })
     }
 
 
-    // private spawnHeatArray(): [][] {
-    // let heatArray: [][] = [];
-    // let maxAmp = 0;
 
-    // //finds highest amp to calc 3 val of heattuple, intensity, which affects gradient color sensitivity
-    // // change to reducer
+    private spawnHeatArray(): [][] {
+    let heatArray: [][] = [];
+    let maxAmp = 0;
+
+    //finds highest amp to calc 3 val of heattuple, intensity, which affects gradient color sensitivity
+    // change to reducer
     // this.activeStations.forEach(obj => obj.capacity > maxAmp? maxAmp = obj.capacity : maxAmp = maxAmp)
-    // const heatTuple = this.activeStations.forEach(obj => {
-    // let heatTuple;
-    // let coords = [obj.lat, obj.lng];
-    // let newCoords = this.mapService.coordinateFormatter(coords);
-    // if (obj.capacity > maxAmp) {maxAmp = obj.capacity}
-    // heatTuple = [newCoords[0], newCoords[1], Number(obj.capacity) / maxAmp]
-    // heatArray.push(heatTuple)
-    // })
-    // return heatArray
-    // }
+    console.log(this.activeStations);
+    if (this.activeStations.length > 0) {
+      const heatTuple = this.activeStations.forEach(obj => {
+        let heatTuple;
+      // let coords = [obj.lat, obj.lng];
+      // let newCoords = this.mapService.coordinateFormatter(coords);
+      // if (obj.capacity > maxAmp) {maxAmp = obj.capacity}
+        heatTuple = [obj.lat, obj.lng, Math.random()]
+        heatArray.push(heatTuple)
+      })
 
-    // private initHeatmap(data?: [][]) {
+    }
+      return heatArray
 
-    // const heat = (L as any).heatLayer(data, {
-    // radius: 100,
-    // gradient: { 0.0: 'blue', 0.5: 'lime', 0.9:'red'},
-    // }).addTo(this._map);
 
-    // this._heatmap = heat;
-    // }
+      }
 
-    // private clearHeatmap() {
-    // this._heatmap.setLatLngs([]);
-    // this._heatmap.redraw();
-    // }
+
+    private initHeatmap(data?: [][]) {
+
+    const heat = (L as any).heatLayer(data, {
+    radius: 100,
+    maxZoom:12,
+    gradient: { 0.0: 'blue', 0.5: 'lime', 0.8:'#ff0241'},
+    }).addTo(this._map);
+
+    this._heatmap = heat;
+    }
+
+    clearHeatmap() {
+    this._heatmap.setLatLngs([]);
+    this._heatmap.redraw();
+    }
 
     createStationMarker(station: StationModel) {
     let coords: string[] | number[] = [station.lat, station.lng];
     // coords = this.mapService.coordinateFormatter(coords);
-      console.log(coords);
+      // console.log(coords);
 
     //basic marker
     let marker = L.circleMarker([coords[0], coords[1]], {
