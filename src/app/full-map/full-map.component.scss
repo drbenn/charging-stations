@@ -1,7 +1,72 @@
-.map {
+.map-parent {
   height: calc(96vh);
-  position: relative;
-  z-index:0;
+  position: fixed;
+  width:100%;
+}
+
+
+.map {
+  // height: calc(96vh);
+  height: 100%;
+  width:100%;
+
+}
+
+.map-no-blur {
+  position: absolute;
+  z-index:1;
+  filter: blur(0px);
+  animation: map-blur-away-anim 1.2s ease-in-out;
+
+}
+
+.map-blur {
+  position: absolute;
+  z-index:-1;
+  filter: blur(8px);
+  background-size: contain;
+  transform: scale(1.06);
+  animation: map-to-blur-anim 1.5s  ease-in-out;
+}
+
+@keyframes map-blur-away-anim {
+  from {
+    filter: blur(8px);
+    transform: scale(1.06);
+  }
+  to {
+    filter: blur(0px);
+    transform: scale(1.0);
+  }
+}
+
+@keyframes map-to-blur-anim {
+  from {
+    filter: blur(0px);
+    transform: scale(1.0);
+  }
+  to {
+    filter: blur(8px);
+    transform: scale(1.06);
+  }
+}
+
+
+
+.inactive-map {
+  background-color: rgba(8, 14, 15, 0.903);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index:10;
+}
+
+.active-map {
+  background-color: rgba(8, 14, 15, 0.903);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index:-10;
 }
 
 // leaflet tooltip bg pane

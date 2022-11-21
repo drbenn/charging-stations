@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
-import { ToggleHeat } from '../shared/state/appState.actions';
+import { ToggleHeat, ToggleMapBlur } from '../shared/state/appState.actions';
 
 @Component({
   selector: 'app-nav',
@@ -9,15 +9,20 @@ import { ToggleHeat } from '../shared/state/appState.actions';
 })
 export class NavComponent implements OnInit {
   heatActive:boolean = true;
+  mapBlur:boolean = false;
+
   constructor(private store: Store) { }
 
   ngOnInit(): void {
   }
 
+  mapBlurToggle() {
+    this.mapBlur = !this.mapBlur;
+    this.store.dispatch(new ToggleMapBlur(this.mapBlur));
+  }
+
   heatToggle() {
     this.heatActive = !this.heatActive;
-    console.log('in nav');
-
     this.store.dispatch(new ToggleHeat(this.heatActive));
   }
 }

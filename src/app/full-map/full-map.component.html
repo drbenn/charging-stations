@@ -1,1 +1,6 @@
-<div #map class="map"></div>
+<div class="map-parent">
+  <!-- <div #map [ngClass]="mapClass"></div>
+  <div [ngClass]="coverClass"></div> -->
+  <div #map class="map" [ngClass]="mapClass"></div>
+  <div class="inactiveMap"></div>
+</div>

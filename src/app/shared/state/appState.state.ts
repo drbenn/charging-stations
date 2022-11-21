@@ -1,14 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Action, State, StateContext, Store } from '@ngxs/store';
+import { Observable } from 'rxjs';
 import { DataService } from '../services/data.service';
-import { LoadStations, ToggleHeat } from './appState.actions';
+import { LoadStations, ToggleHeat, ToggleMapBlur } from './appState.actions';
 
 
 
 export interface AppStateModel {
   stations: any;
   heatMapOn: boolean;
+  mapBlurOn: boolean;
 }
 
 @State<AppStateModel>({
@@ -16,6 +18,7 @@ export interface AppStateModel {
   defaults: {
     stations: '',
     heatMapOn: true,
+    mapBlurOn: false,
   },
 })
 @Injectable()
@@ -35,12 +38,22 @@ export class AppState {
     ctx.patchState({ stations: payload.stations });
   }
 
+  @Action(ToggleMapBlur)
+  toggleMapBlur(
+    ctx: StateContext<AppStateModel>,
+    payload: { mapBlurActive: boolean }
+  ) {
+    ctx.patchState({ mapBlurOn: payload.mapBlurActive });
+  }
+
   @Action(ToggleHeat)
   toggleHeat(
     ctx: StateContext<AppStateModel>,
     payload: { heatActive: boolean }
   ) {
-    ctx.patchState({ heatMapOn: payload.heatActive });
+   let blurActive = ctx.getState().mapBlurOn;
+    if (!blurActive) {
+      ctx.patchState({ heatMapOn: payload.heatActive });
+    }
   }
-
 }
