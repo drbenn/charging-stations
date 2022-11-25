@@ -3,17 +3,20 @@
   <!-- <div class="animating-gradient-1" [ngStyle]="countObject"></div> -->
 
   <div class="gradient-overflow-container">
-    <div class="animating-gradient" [ngStyle]="countObject"></div>
+    <div class="animating-gradient" [ngStyle]="gradientObject"></div>
     <div class="dot-layer">
-      <div class="dot" *ngFor="let i of dotArray(dotCount)">.</div>
+      <div class="dot" *ngFor="let i of dotArray(dotCount)">&#176;</div>
     </div>
     <div class="transition-layer"></div>
     <div class="nav-link-layer">
-      <ul>
-        <ol>INTRO</ol>
-        <ol (click)="mapBlurToggle()">MAP</ol>
-        <ol (click)="heatToggle()">Heat</ol>
-      </ul>
+      <div class="sound-button"><img src="/assets/img/audio/{{soundImgName}}.png" (click)="soundToggle()"></div>
+      <div>
+        <ul>
+          <ol>INTRO</ol>
+          <ol (click)="mapBlurToggle()">MAP</ol>
+          <ol (click)="heatToggle()">HEAT</ol>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
