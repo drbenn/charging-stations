@@ -87,11 +87,11 @@ export class FullMapComponent implements OnInit {
     let myMap = L.map(this.mapElement.nativeElement, mapOptions).setView([40,-97],4.5);
     // this.addLeafletControls(myMap);
 
-    const southWest = L.latLng(-89.98155760646617, -180);
-    const northEast = L.latLng(89.99346179538875, 180);
+    const southWest = L.latLng(0, -180);
+    const northEast = L.latLng(73, -40);
     const bounds = L.latLngBounds(southWest, northEast);
 
-    myMap.setMinZoom(2);
+    myMap.setMinZoom(3);
     myMap.setMaxBounds(bounds);
     myMap.on('drag', function() {
     myMap.panInsideBounds(bounds, { animate: false });
@@ -202,9 +202,9 @@ export class FullMapComponent implements OnInit {
     private initHeatmap(data?: [][]) {
 
     const heat = (L as any).heatLayer(data, {
-    radius: 100,
+    radius: 70,
     maxZoom:12,
-    gradient: { 0.0: 'blue', 0.5: 'lime', 0.8:'#ff0241'},
+    gradient: { 0.0: '#6226ee', 0.5: '#5acbff', 0.8:'#ff5a86'},
     }).addTo(this._map);
 
     this._heatmap = heat;
@@ -233,7 +233,7 @@ export class FullMapComponent implements OnInit {
     // Or use icon image
     // iconsize hieght is 1.617 ratio of width
     let imgIcon = L.icon({
-    iconUrl: '../../assets/pin-point.png',
+    iconUrl: '../../assets/img/marker-2.png',
     iconSize:[15,24.25],
     shadowSize: [50,50],
     iconAnchor: [0,40],
