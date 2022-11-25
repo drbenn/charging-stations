@@ -76,14 +76,26 @@ export class FullMapComponent implements OnInit {
 
     const mapOptions = {
     zoomControl: true,
+    // maxBounds:L.bounds,
+    maxBoundsViscosity: 1.0,
     layers: [tileLayer],
     attributionControl: false,
     gestureHandling: true,
+
     };
     // init map
     let myMap = L.map(this.mapElement.nativeElement, mapOptions).setView([40,-97],4.5);
     // this.addLeafletControls(myMap);
 
+    const southWest = L.latLng(-89.98155760646617, -180);
+    const northEast = L.latLng(89.99346179538875, 180);
+    const bounds = L.latLngBounds(southWest, northEast);
+
+    myMap.setMinZoom(2);
+    myMap.setMaxBounds(bounds);
+    myMap.on('drag', function() {
+    myMap.panInsideBounds(bounds, { animate: false });
+});
     this._map =myMap;
     }
 

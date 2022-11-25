@@ -14,7 +14,7 @@
   padding-right: 2vw;
   height: 4vh;
   position: relative;
-  z-index: 100;
+  z-index: 1;
 }
 
 ul {
@@ -25,3 +25,88 @@ ul {
 li {
   display: inline;
 }
+
+// .animating-gradient-1 {
+//   height: 300px;
+//   width: 300px;
+//   border: 2px solid red;
+//   position: absolute;
+//   top:100px;
+//   left:100px;
+//   background-image: linear-gradient( 135deg, #79F1A4 0%, #0E5CAD 68%, #fd31ff 100%);
+// }
+
+.gradient-overflow-container {
+  // border: 3px solid red;
+  height:inherit;
+  width: 300px;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+}
+
+
+.animating-gradient {
+  height: 24rem;
+  width: 32rem;
+  // border: 2px solid blue;
+  position: absolute;
+  z-index: 3;
+
+}
+
+.dot-layer {
+  height: inherit;
+  width: inherit;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: absolute;
+  transform: translate(0px, -15px);
+  z-index: 4;
+
+  // background-color: red;
+}
+
+.dot {
+  color: rgba(82, 82, 82, 0.959);
+  // border: 1px solid white;
+  padding:4px;
+  font-size: 18px;
+  height: 1px;
+  line-height: 1px;
+
+  animation: dot-animation 16s linear infinite;
+}
+
+@keyframes dot-animation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.6) translateY(10px);
+
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.transition-layer {
+  height: inherit;
+  width: inherit;
+  background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.13487401796656162) 10%, rgba(0,0,0,1) 80%);
+  position: absolute;
+  z-index: 5;
+}
+
+.nav-link-layer {
+  height: inherit;
+  width: inherit;
+  // background-color: brown;
+  position: absolute;
+  z-index: 6;
+}
+

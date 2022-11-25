@@ -1,7 +1,19 @@
 <div class="nav-container">
-  <ul>
-    <ol>INTRO</ol>
-    <ol (click)="mapBlurToggle()">MAP</ol>
-    <ol (click)="heatToggle()">Heat</ol>
-  </ul>
+  <!-- <div class="animating-gradient" [ngStyle]="{'background-image': 'linear-gradient( 135deg, #79F1A4 10%, #0E5CAD 100%)'}'"></div> -->
+  <!-- <div class="animating-gradient-1" [ngStyle]="countObject"></div> -->
+
+  <div class="gradient-overflow-container">
+    <div class="animating-gradient" [ngStyle]="countObject"></div>
+    <div class="dot-layer">
+      <div class="dot" *ngFor="let i of dotArray(dotCount)">.</div>
+    </div>
+    <div class="transition-layer"></div>
+    <div class="nav-link-layer">
+      <ul>
+        <ol>INTRO</ol>
+        <ol (click)="mapBlurToggle()">MAP</ol>
+        <ol (click)="heatToggle()">Heat</ol>
+      </ul>
+    </div>
+  </div>
 </div>
