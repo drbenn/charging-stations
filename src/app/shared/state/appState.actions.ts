@@ -12,3 +12,9 @@ export class ToggleHeat {
   static readonly type = '[Map] heatmap toggle on/off';
   constructor(public heatActive: boolean) {}
 }
+
+
+export class SetFilterOptions {
+  static readonly type = '[Filter Pane] all filter options to state';
+  constructor(public options: string[][]) {}
+}

@@ -15,3 +15,10 @@ export interface StationModel {
   network: string,
   pricing: string,
 }
+
+
+export interface DropDownFilterList {
+  value: string,
+  checked : boolean,
+  viewName?: string,
+}

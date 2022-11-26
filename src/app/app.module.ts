@@ -10,13 +10,15 @@ import { NgxsModule } from '@ngxs/store';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { AppState } from './shared/state/appState.state';
 import { NavComponent } from './nav/nav.component';
+import { FilterPaneComponent } from './full-map/filter-pane/filter-pane.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     FullMapComponent,
-    NavComponent
+    NavComponent,
+    FilterPaneComponent
   ],
   imports: [
     BrowserModule,

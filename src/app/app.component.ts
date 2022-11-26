@@ -16,7 +16,7 @@ export class AppComponent implements OnInit{
   constructor(private apiService: ApiService, private dataService:DataService) {}
 
   ngOnInit(): any {
-    let jsonData = this.dataService.getJsonData();
+    this.dataService.initData();
     // console.log(jsonData);
 
 

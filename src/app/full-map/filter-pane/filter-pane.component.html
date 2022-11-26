@@ -11,6 +11,21 @@ connector types dropdowns
 
       <div class="filter-section">
         <div class="option-title">Connector</div>
+        <div class="option-dropdown-container">
+          <div (mouseleave)="showDropDown = false">
+            <button class="drop-toggle btn flat" (click)="showDropDown=!showDropDown">
+                <span>Select</span>
+                <i class="fa fa-angle-down"></i>
+            </button>
+            <div class="drop-show" *ngIf="showDropDown">
+                <label *ngFor="let a of connectorOptions">
+                    <input type="checkbox" [(ngModel)]="a.checked" checked
+                        (change)="getSelectedValue(a.checked,a.viewName)" />
+                    <span>{{a.viewName}}</span>
+                </label>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="filter-section">

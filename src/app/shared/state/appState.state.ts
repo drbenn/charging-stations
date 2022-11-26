@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Action, State, StateContext, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { DataService } from '../services/data.service';
-import { LoadStations, ToggleHeat, ToggleMapBlur } from './appState.actions';
+import { LoadStations, SetFilterOptions, ToggleHeat, ToggleMapBlur } from './appState.actions';
 
 
 
@@ -11,6 +11,10 @@ export interface AppStateModel {
   stations: any;
   heatMapOn: boolean;
   mapBlurOn: boolean;
+  dropDownOptions: string[][],
+  stationPriceOptions: string[],
+  networkOptions: string[],
+  connectorOptions: string[],
 }
 
 @State<AppStateModel>({
@@ -19,6 +23,10 @@ export interface AppStateModel {
     stations: '',
     heatMapOn: true,
     mapBlurOn: false,
+    dropDownOptions: [],
+    stationPriceOptions: [],
+    networkOptions: [],
+    connectorOptions: [],
   },
 })
 @Injectable()
@@ -55,5 +63,18 @@ export class AppState {
     if (!blurActive) {
       ctx.patchState({ heatMapOn: payload.heatActive });
     }
+  }
+
+  @Action(SetFilterOptions)
+  setFilterOptions(
+    ctx: StateContext<AppStateModel>,
+    payload: { options: string[][] }
+  ) {
+    ctx.patchState({
+      dropDownOptions: payload.options,
+      stationPriceOptions: payload.options[0],
+      networkOptions: payload.options[1],
+      connectorOptions: payload.options[2],
+      });
   }
 }
