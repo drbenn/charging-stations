@@ -12,4 +12,8 @@ export class FilterPaneComponent implements OnInit {
   ngOnInit(): void {
   }
 
+ filterToggle() {
+  console.log('filter toggle clicked');
+
+ }
 }

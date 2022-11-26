@@ -1,0 +1,31 @@
+.filter-container {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  height: fit-content;
+  width: fit-content;
+  position: absolute;
+  top: 10;
+  right:0;
+
+  .open-filter-icon {
+    // background-color: yellow;
+    height: fit-content;
+    border: 1px solid blue;
+    margin-right: 3rem;
+    img {
+      height: 3rem;
+    }
+
+  }
+
+  .filter-pane {
+    background-color: rgba(23, 23, 23, 0.937);
+    border-left: 1px solid rgb(0, 0, 0);
+    height:100px;
+    width: 500px;
+  }
+
+}
