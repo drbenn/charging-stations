@@ -1,7 +1,14 @@
 
 <div class="filter-container">
   <div class="open-filter-container">
-    <div class="open-filter-icon"><img src="/assets/img/map/icons8-full-page-view-80.png" (click)="filterToggle()"></div>
+    <div class="open-filter-burger">
+      <div class="nav-burger" (click)="setBurgerClass($event)">
+        <div [ngClass]="burgerClasses[0]"  id="burger-line-1"></div>
+        <div [ngClass]="burgerClasses[1]"  id="burger-line-2"></div>
+        <div [ngClass]="burgerClasses[2]"  id="burger-line-3"></div>
+      </div>
+    </div>
+    <!-- <div class="open-filter-icon"><img src="/assets/img/map/icons8-full-page-view-80.png" (click)="filterToggle()"></div> -->
   </div>
   <div class="filter-pane">
     <div class="filter-options-container">
