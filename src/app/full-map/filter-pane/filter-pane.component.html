@@ -1,7 +1,4 @@
-<p>filter-pane works!</p>
-free/not free
-Network Dropdown
-connector types dropdowns
+
 <div class="filter-container">
   <div class="open-filter-container">
     <div class="open-filter-icon"><img src="/assets/img/map/icons8-full-page-view-80.png" (click)="filterToggle()"></div>
@@ -10,18 +7,20 @@ connector types dropdowns
     <div class="filter-options-container">
 
       <div class="filter-section">
-        <div class="option-title">Connector</div>
+        <div class="option-title">
+          Connector
+        </div>
         <div class="option-dropdown-container">
-          <div (mouseleave)="showDropDown = false">
-            <button class="drop-toggle btn flat" (click)="showDropDown=!showDropDown">
+          <div (mouseleave)="showDropDownConnector = false">
+            <button class="drop-toggle btn flat" (click)="showDropDownConnector=!showDropDownConnector">
                 <span>Select</span>
                 <i class="fa fa-angle-down"></i>
             </button>
-            <div class="drop-show" *ngIf="showDropDown">
-                <label *ngFor="let a of connectorOptions">
-                    <input type="checkbox" [(ngModel)]="a.checked" checked
-                        (change)="getSelectedValue(a.checked,a.viewName)" />
-                    <span>{{a.viewName}}</span>
+            <div class="drop-show" *ngIf="showDropDownConnector">
+                <label *ngFor="let option of connectorOptions">
+                    <input type="checkbox" [(ngModel)]="option.checked" checked
+                        (change)="getSelectedValue(option.checked,option.viewName)" />
+                    <span>{{option.viewName}}</span>
                 </label>
             </div>
           </div>
@@ -29,11 +28,45 @@ connector types dropdowns
       </div>
 
       <div class="filter-section">
-        <div class="option-title">Network</div>
+        <div class="option-title">
+          Network
+        </div>
+        <div class="option-dropdown-container">
+          <div (mouseleave)="showDropDownNetwork = false">
+            <button class="drop-toggle btn flat" (click)="showDropDownNetwork=!showDropDownNetwork">
+                <span>Select</span>
+                <i class="fa fa-angle-down"></i>
+            </button>
+            <div class="drop-show" *ngIf="showDropDownNetwork">
+              <label *ngFor="let option of networkOptions">
+                  <input type="checkbox" [(ngModel)]="option.checked" checked
+                      (change)="getSelectedValue(option.checked,option.viewName)" />
+                  <span>{{option.viewName}}</span>
+              </label>
+            </div>
+          </div>
+        </div>
       </div>
 
       <div class="filter-section">
-        <div class="option-title">Cost</div>
+        <div class="option-title">
+          Cost
+        </div>
+        <div class="option-dropdown-container">
+          <div (mouseleave)="showDropDownCost = false">
+            <button class="drop-toggle btn flat" (click)="showDropDownCost=!showDropDownCost">
+                <span>Select</span>
+                <i class="fa fa-angle-down"></i>
+            </button>
+            <div class="drop-show" *ngIf="showDropDownCost">
+                <label *ngFor="let option of costOptions">
+                    <input type="checkbox" [(ngModel)]="option.checked" checked
+                        (change)="getSelectedValue(option.checked,option.viewName)" />
+                    <span>{{option.viewName}}</span>
+                </label>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>

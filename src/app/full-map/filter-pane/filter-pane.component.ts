@@ -9,8 +9,14 @@ import { DropDownFilterList } from 'src/app/shared/models/app.models';
   styleUrls: ['./filter-pane.component.scss']
 })
 export class FilterPaneComponent implements OnInit {
-  connectorOptions: DropDownFilterList[] = [];
-  networkOptions: string[] = [];
+  allObject: DropDownFilterList = {value: 'all',checked : true,viewName: 'All'};
+  connectorOptions: DropDownFilterList[] = [this.allObject];
+  networkOptions: DropDownFilterList[] = [this.allObject];
+  costOptions: DropDownFilterList[] = [
+    this.allObject,
+    {value: 'charge',checked : true, viewName: 'Charge'},
+    {value: 'free',checked : true,viewName: 'Free'}
+    ]
 
   // @Input() list:any[];
 
@@ -18,16 +24,11 @@ export class FilterPaneComponent implements OnInit {
   @Output() shareIndividualCheckedList = new EventEmitter();
 
 
-  list = [
-    {name :'India',checked : true},
-    {name :'US',checked : true},
-    {name :'China',checked : true},
-    {name :'France',checked : true}
-  ]
-
   checkedList : any[];
   currentSelected : {};
-  showDropDown: boolean = false;
+  showDropDownConnector: boolean = false;
+  showDropDownNetwork: boolean = false;
+  showDropDownCost: boolean = false;
 
 
   constructor(
@@ -58,17 +59,19 @@ export class FilterPaneComponent implements OnInit {
           checked : true,
           viewName: option,
         }
-        console.log(connectorObj);
-
         this.connectorOptions.push(connectorObj)
-
+      })}
+    //network
+    if (options[1]) {
+      let networks = options[1].forEach((option) => {
+        let networkObj:DropDownFilterList = {
+          value: option.toLowerCase(),
+          checked : true,
+          viewName: option,
+        }
+        this.networkOptions.push(networkObj)
       })
-      console.log(this.connectorOptions);
-
-
     }
-
-
   }
 
 
