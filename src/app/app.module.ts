@@ -11,6 +11,7 @@ import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { AppState } from './shared/state/appState.state';
 import { NavComponent } from './nav/nav.component';
 import { FilterPaneComponent } from './full-map/filter-pane/filter-pane.component';
+import { IntroComponent } from './intro/intro.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { FilterPaneComponent } from './full-map/filter-pane/filter-pane.componen
     AppComponent,
     FullMapComponent,
     NavComponent,
-    FilterPaneComponent
+    FilterPaneComponent,
+    IntroComponent
   ],
   imports: [
     BrowserModule,

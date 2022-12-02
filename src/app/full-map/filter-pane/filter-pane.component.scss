@@ -24,7 +24,7 @@
   }
 
   .filter-pane {
-    background-color: rgba(9, 18, 20, 0.874);
+    background-color: var(--filter-bg);
     border-left: 1px solid rgb(0, 0, 0);
     height:fit-content;
     width: fit-content;

@@ -3,9 +3,9 @@ export class LoadStations {
   constructor(public stations: any) {}
 }
 
-export class ToggleMapBlur {
-  static readonly type = '[Map] map blur toggle on/off';
-  constructor(public mapBlurActive: boolean) {}
+export class ToggleMapView {
+  static readonly type = '[Map] turn map view on/off';
+  constructor(public mapView: boolean) {}
 }
 
 export class ToggleHeat {

@@ -3,14 +3,14 @@ import { Injectable } from '@angular/core';
 import { Action, State, StateContext, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { DataService } from '../services/data.service';
-import { LoadStations, SetFilterOptions, ToggleHeat, ToggleMapBlur } from './appState.actions';
+import { LoadStations, SetFilterOptions, ToggleHeat, ToggleMapView } from './appState.actions';
 
 
 
 export interface AppStateModel {
   stations: any;
+  mapView: boolean;
   heatMapOn: boolean;
-  mapBlurOn: boolean;
   dropDownOptions: string[][],
   stationPriceOptions: string[],
   networkOptions: string[],
@@ -21,8 +21,8 @@ export interface AppStateModel {
   name: 'appState',
   defaults: {
     stations: '',
+    mapView: false,
     heatMapOn: true,
-    mapBlurOn: false,
     dropDownOptions: [],
     stationPriceOptions: [],
     networkOptions: [],
@@ -46,12 +46,12 @@ export class AppState {
     ctx.patchState({ stations: payload.stations });
   }
 
-  @Action(ToggleMapBlur)
-  toggleMapBlur(
+  @Action(ToggleMapView)
+  toggleMapView(
     ctx: StateContext<AppStateModel>,
-    payload: { mapBlurActive: boolean }
+    payload: { mapView: boolean }
   ) {
-    ctx.patchState({ mapBlurOn: payload.mapBlurActive });
+    ctx.patchState({ mapView: payload.mapView });
   }
 
   @Action(ToggleHeat)
@@ -59,8 +59,8 @@ export class AppState {
     ctx: StateContext<AppStateModel>,
     payload: { heatActive: boolean }
   ) {
-   let blurActive = ctx.getState().mapBlurOn;
-    if (!blurActive) {
+   let mapView = ctx.getState().mapView;
+    if (mapView) {
       ctx.patchState({ heatMapOn: payload.heatActive });
     }
   }

@@ -26,6 +26,7 @@ export class FullMapComponent implements OnInit {
   _map: L.Map;
   _heatmap: any;
   _stations:any;
+  _mapActive:boolean;
   // @Select(AppState.stations) stations$: Observable<StationModel[]>;
 
   activeStations: StationModel[] = [];
@@ -43,18 +44,23 @@ export class FullMapComponent implements OnInit {
   // stations$.subscribe((_stations: any) => {
   //   this._stations = _stations;
   // })
-  const mapBlurToggle$: Observable<boolean> = this.store.select((state) => state.appState.mapBlurOn);
-  mapBlurToggle$.subscribe((mapBlurToggle: boolean) => {
-    console.log(mapBlurToggle);
-    if (mapBlurToggle) {
+
+  const mapActiveToggle$: Observable<boolean> = this.store.select((state) => state.appState.mapView);
+  mapActiveToggle$.subscribe((mapViewToggle: boolean) => {
+    console.log(mapViewToggle);
+    this._mapActive = mapViewToggle;
+    if (mapViewToggle) {
       this.mapClass = 'map-blur';
       this.coverClass = 'inactive-map';
-    }
-    if (!mapBlurToggle) {
       this.mapClass = 'map-no-blur';
       this.coverClass = 'active-map';
     }
+    if (!mapViewToggle) {
+      this.mapClass = 'map-blur';
+      this.coverClass = 'inactive-map';
+    }
   })
+
 
   this.initMap();
   this.initSubscriptions();

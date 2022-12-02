@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { TimeInterval } from 'rxjs/internal/operators/timeInterval';
-import { ToggleHeat, ToggleMapBlur } from '../shared/state/appState.actions';
+import { ToggleHeat, ToggleMapView } from '../shared/state/appState.actions';
 
 
 @Component({
@@ -19,7 +19,8 @@ export class NavComponent implements OnInit {
   heatActive:boolean = true;
 
   //map prop
-  mapBlur:boolean = false;
+  mapActive:boolean = false;
+
 
   //gradient props
   gradientCounter: number = 0;
@@ -68,10 +69,14 @@ export class NavComponent implements OnInit {
 
   }
 
+  protected toIntro() {
+    this.mapActive = false;
+    this.store.dispatch(new ToggleMapView(this.mapActive))
+  }
 
-  protected mapBlurToggle() {
-    this.mapBlur = !this.mapBlur;
-    this.store.dispatch(new ToggleMapBlur(this.mapBlur));
+  protected toMap() {
+    this.mapActive = true;
+    this.store.dispatch(new ToggleMapView(this.mapActive))
   }
 
 
