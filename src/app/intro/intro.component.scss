@@ -1,13 +1,15 @@
 .intro-container {
   position: absolute;
   width: 100%;
-  height: calc(96vh);
+  height: calc(80% - 1.8rem);
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  margin-top: 0vh;
 }
 
 .info-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -17,7 +19,7 @@
   height: 100%;
   background-color: var(--info-bg);
   color: white;
-  padding: 2rem 4rem;
+  padding: 2rem 4rem 0rem 2rem;
 }
 
 .clear-container {
@@ -32,7 +34,39 @@
 }
 
 .title {
-  font-size: 2rem;
-  font-weight: 600;
+  font-size: 3rem;
+  font-weight: 500;
+  margin: 3rem 0rem;
 }
 
+.subtitle {
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+p {
+  font-size: 0.9rem;
+  margin-left: 1rem;
+}
+
+.links {
+  margin: 2rem 0rem 4rem 1rem;
+}
+
+a:link {
+  color:var(--accent-bg);
+  text-decoration: none;
+}
+a:visited {
+  color:var(--accent-bg);
+  text-decoration: none;
+}
+a:active {
+  color:var(--accent-bg);
+  text-decoration: none;
+}
+a:hover {
+  color:var(--accent-3);
+  text-decoration: none;
+}
