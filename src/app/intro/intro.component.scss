@@ -1,7 +1,7 @@
 .intro-container {
   position: absolute;
   width: 100%;
-  height: calc(80% - 1.8rem);
+  height: 100vh;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -9,17 +9,21 @@
 }
 
 .info-container {
-  position: relative;
+  position: rel;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: center;
   width: 40%;
-  height: 100%;
+  max-height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
   background-color: var(--info-bg);
   color: white;
   padding: 2rem 4rem 0rem 2rem;
+  z-index: 9;
 }
 
 .clear-container {
@@ -36,7 +40,11 @@
 .title {
   font-size: 3rem;
   font-weight: 500;
-  margin: 3rem 0rem;
+  margin: 3rem 0rem 0rem 0rem;
+}
+
+section {
+  margin-top:4rem;
 }
 
 .subtitle {
@@ -48,15 +56,17 @@
 p {
   font-size: 0.9rem;
   margin-left: 1rem;
+  text-shadow: 1px 1px 1px rgb(138, 138, 138);
 }
 
 .links {
-  margin: 2rem 0rem 4rem 1rem;
+  margin: 2rem 0rem 0rem 1rem;
 }
 
 a:link {
   color:var(--accent-bg);
   text-decoration: none;
+  transition: all ease-in-out 200ms;
 }
 a:visited {
   color:var(--accent-bg);
@@ -69,4 +79,5 @@ a:active {
 a:hover {
   color:var(--accent-3);
   text-decoration: none;
+  transition: all ease-in-out 200ms;
 }

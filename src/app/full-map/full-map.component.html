@@ -1,4 +1,4 @@
-<div class="map-parent" [ngStyle]="_mapActive ? 5 : -20">
+<div class="map-parent" [ngStyle]="{'z-index':_mapActive ? 5 : -20}">
   <!-- <div #map [ngClass]="mapClass"></div>
   <div [ngClass]="coverClass"></div> -->
   <div #map class="map" [ngClass]="mapClass"></div>
