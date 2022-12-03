@@ -81,7 +81,7 @@ export class FullMapComponent implements OnInit {
     const tileLayer = L.tileLayer(cartoDark);
 
     const mapOptions = {
-    zoomControl: true,
+    zoomControl: false,
     // maxBounds:L.bounds,
     maxBoundsViscosity: 1.0,
     layers: [tileLayer],
@@ -91,7 +91,7 @@ export class FullMapComponent implements OnInit {
     };
     // init map
     let myMap = L.map(this.mapElement.nativeElement, mapOptions).setView([40,-97],4.5);
-    // this.addLeafletControls(myMap);
+    new L.Control.Zoom({position: 'bottomleft'}).addTo(myMap);
 
     const southWest = L.latLng(0, -180);
     const northEast = L.latLng(73, -40);
