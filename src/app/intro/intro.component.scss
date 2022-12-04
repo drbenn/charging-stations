@@ -6,6 +6,7 @@
   flex-direction: row;
   flex-wrap: nowrap;
   margin-top: 0vh;
+  background-color: rgba(245, 245, 245, 0.245);
 }
 
 .info-container {
@@ -15,8 +16,12 @@
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: center;
+  margin-top: 3rem;
+  margin-left: 0.8rem;
+  margin-bottom: 1rem;
   width: 40%;
-  max-height: 100vh;
+  min-width: 20rem;
+  max-height: 90vh;
   overflow-y: auto;
   overflow-x: hidden;
   scrollbar-width: none;
@@ -24,6 +29,7 @@
   color: white;
   padding: 2rem 4rem 0rem 2rem;
   z-index: 9;
+  border-radius: 0.1rem;
 }
 
 .clear-container {
@@ -34,7 +40,7 @@
   align-items: center;
   width: 60%;
   height: 100%;
-  background-color: rgba(245, 245, 245, 0.245);
+
 }
 
 .title {
@@ -44,17 +50,19 @@
 }
 
 section {
-  margin-top:4rem;
+  margin-top:1.5rem;
+  margin-bottom: 3rem;
 }
 
 .subtitle {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 500;
   margin-bottom: 2rem;
 }
 
 p {
-  font-size: 0.9rem;
+  font-size: 1.1rem;
+  font-weight: 200;
   margin-left: 1rem;
   text-shadow: 1px 1px 1px rgb(138, 138, 138);
 }
@@ -80,4 +88,51 @@ a:hover {
   color:var(--accent-3);
   text-decoration: none;
   transition: all ease-in-out 200ms;
+}
+
+
+.spy-observer-container {
+  border: 1px solid hotpink;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  height: 40%;
+
+}
+
+.circle-cluster {
+  border: 1px solid chartreuse;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.section-circle {
+  background-color: red;
+  border: 0.15rem solid blue;
+  border-radius: 10rem;
+  height: 0.6rem;
+  width: 0.6rem;
+}
+
+.paragraph-circle {
+  background-color: rgba(0, 0, 0, 0.308);
+  border: 0.124rem solid rgb(150, 150, 150);
+  border-radius: 10rem;
+  height: 0.4rem;
+  width: 0.4rem;
+  margin-left: 0.1rem;
+}
+
+.paragraph-circle-active {
+  background-color: rgb(223, 0, 111);
+  border: 0.125rem solid orange;
+  border-radius: 10rem;
+  height: 0.4rem;
+  width: 0.4rem;
+  margin-left: 0.1rem;
 }
