@@ -1,10 +1,12 @@
-<div class="intro-container" [ngStyle]="{'z-index':!_mapActive ? 5 : 1}">
+<div class="intro-container" [ngStyle]="{'z-index':!_mapActive ? 5 : 1}"
+waIntersectionObserver waIntersectionThreshold="0.5">
 
   <div class="info-container"  [ngStyle]="{'z-index':!_mapActive ? 6 : 1}">
 
     <div class="title">EV Charging Stations</div>
 
-    <section>
+    <section id="sec_circle_1"
+    (waIntersectionObservee)="onIntersection($event)">
       <p>
         A charging station, also known as a charge point or electric vehicle supply equipment (EVSE), is a piece of equipment that supplies electrical power for charging plug-in electric vehicles (including electric cars, electric trucks, electric buses, neighborhood electric vehicles, and plug-in hybrids).
       </p>
@@ -23,14 +25,19 @@
     </section>
 
     <section>
-      <div class="subtitle">SAE J1772</div>
+      <div class="subtitle" id="sec_circle_2"
+      (waIntersectionObservee)="onIntersection($event)">
+        SAE J1772
+      </div>
       <p>
         SAE J1772, also known as a J plug or Type 1 connector after its international standard, IEC 62196 Type 1, is a North American standard for electrical connectors for electric vehicles maintained by SAE International under the formal title "SAE Surface Vehicle Recommended Practice J1772, SAE Electric Vehicle Conductive Charge Coupler".
       </p>
-      <p>
+      <p id="p_circle_2_1"
+      (waIntersectionObservee)="onIntersection($event)">
         The SAE maintains the general physical, electrical, communication protocol, and performance requirements for the electric vehicle conductive charge system and coupler. The intent is to define a common electric vehicle conductive charging system architecture including operational requirements and the functional and dimensional requirements for the vehicle inlet and mating connector. autem.
       </p>
-      <p>
+      <p id="p_circle_2_2"
+      (waIntersectionObservee)="onIntersection($event)">
         The J1772 5-pin standard supports a wide range of single-phase (1φ) alternating current (AC) charging rates. They range from portable devices that can connect to a household NEMA 5-15 outlet that can deliver 1.44 kW (12 amps @ 120 volts) to hardwired equipment that can deliver up to 19.2 kW (80 amps @ 240 volts). These connectors are sometimes informally referred to as chargers, but they are "electric vehicle supply equipment" (EVSE), since they only supply AC power to the vehicle's on-board charger, which then converts it to the direct current (DC) needed to recharge the battery.
       </p>
       <div class="links">
@@ -41,26 +48,34 @@
 
 
     <section>
-      <div class="subtitle">NEMA-5</div>
+      <div class="subtitle" id="sec_circle_3"
+        (waIntersectionObservee)="onIntersection($event)">
+        NEMA-5
+      </div>
       <p>
         All NEMA 5 devices are three-wire grounding devices (hot-neutral-ground) rated for 125 V maximum, with the 5-15, 5-20 and 5-30 being grounded versions of the 1-15, 1-20 and 1-30, respectively. The addition is a 3⁄16-inch (4.8 mm) diameter round or U-shaped ground pin, 1⁄8 in (3.2 mm) longer than the power blades (so the device is grounded before the power is connected) and located from them by 1⁄4 in (6.4 mm) edge-to-edge or 15⁄32 in (11.9 mm) center-to-center.
       </p>
-      <p>
+      <p id="p_circle_3_1"
+      (waIntersectionObservee)="onIntersection($event)">
         Compared to the 5-15P plug, the 5-20P plug has the neutral blade rotated 90° and shifted so its inner edge is approximately 1⁄2 in (12.7 mm) from the hot blade. The 5-20R receptacle has a T-shaped neutral hole, to accept both 5-15P and 5-20P plugs. An acceptable alternative version of the 5-20R receptacle has a rectangular slot that will only accept 5-20P plugs. The 5-30 and 5-50 are physically larger, with 1 in (25.4 mm) between power pins; 5-30 also has an L-shaped neutral blade. These larger sizes are uncommon, as twist-locking plugs are generally used for high-current applications.
       </p>
       <p>
         The neutral blade on 5-15P plugs is not always wider than the line blade, since the ground pin enforces polarity.
       </p>
-      <p>
+      <p id="p_circle_3_2"
+      (waIntersectionObservee)="onIntersection($event)">
         The Electrical Safety Foundation International has stated: "Never remove the ground pin (the third prong) to make a three-prong plug fit a two-prong outlet". In addition to the dangers of breaking a ground connection, removing the ground pin to make it fit a 1-15R receptacle or extension cord, may result in the live-neutral polarity being lost.
       </p>
-      <p>
+      <p id="p_circle_3_3"
+      (waIntersectionObservee)="onIntersection($event)">
         The 5-15R and 5-20R are by far the most common electrical receptacle in North America in buildings built since the mid-twentieth century. It is usually installed in a duplex configuration; two receptacles may share a common circuit or may each be wired separately, sometimes to a switch.
       </p>
-      <p>
+      <p id="p_circle_3_4"
+      (waIntersectionObservee)="onIntersection($event)">
         In 46 of the 50 United States and all of Canada, tamper-resistant receptacles are required in new residential construction as of November 2013. These prevent contact by objects like keys or paper clips inserted into the socket. This is accomplished by an interlocking mechanism that requires hot and neutral blades inserted simultaneously to release the small doors blocking the slots. The grounding slot is not blocked by a door.
       </p>
-      <p>
+      <p id="p_circle_3_5"
+      (waIntersectionObservee)="onIntersection($event)">
         In stage lighting for film and theater, this connector is sometimes informally known as PBG (Parallel Blade with Ground), U-ground, Edison or Hubbell, the name of a common manufacturer. (The name "Hubbell" can be confusing as several different connectors share this name depending on the company, industry, and use.) In the motion picture and TV production industries, an extension cord that uses this type of connector (usually with 12 AWG or 10 AWG wire)is called a "stinger". Generally, lighting technicians use these extension cords to deliver power to lights rated at 2,000 watts or less.
       </p>
       <div class="links">
@@ -71,11 +86,15 @@
 
 
     <section>
-      <div class="subtitle">NEMA 5-15</div>
+      <div class="subtitle" id="sec_circle_4"
+      (waIntersectionObservee)="onIntersection($event)">
+        NEMA 5-15
+      </div>
       <p>
         All NEMA 5 devices are three-wire grounding devices (hot-neutral-ground) rated for 125 V maximum, with the 5-15, 5-20 and 5-30 being grounded versions of the 1-15, 1-20 and 1-30, respectively. The addition is a 3⁄16-inch (4.8 mm) diameter round or U-shaped ground pin, 1⁄8 in (3.2 mm) longer than the power blades (so the device is grounded before the power is connected) and located from them by 1⁄4 in (6.4 mm) edge-to-edge or 15⁄32in (11.9 mm) center-to-center.
       </p>
-      <p>
+      <p id="p_circle_4_1"
+      (waIntersectionObservee)="onIntersection($event)">
         Compared to the 5-15P plug, the 5-20P plug has the neutral blade rotated 90° and shifted so its inner edge is approximately 1⁄2 in (12.7 mm) from the hot blade. The 5-20R receptacle has a T-shaped neutral hole, to accept both 5-15P and 5-20P plugs. An acceptable alternative version of the 5-20R receptacle has a rectangular slot that will only accept 5-20P plugs. The 5-30 and 5-50 are physically larger, with 1 in (25.4 mm) between power pins; 5-30 also has an L-shaped neutral blade. These larger sizes are uncommon, as twist-locking plugs are generally used for high-current applications.
       </p>
       <div class="links">
@@ -85,7 +104,10 @@
 
 
     <section>
-      <div class="subtitle">NEMA 5-20</div>
+      <div class="subtitle" id="sec_circle_5"
+      (waIntersectionObservee)="onIntersection($event)">
+        NEMA 5-20
+      </div>
       <p>
         The NEMA 5-20 AP variant has blades perpendicular to each other. The receptacle has a T-slot for the neutral blade which accepts either 15 A parallel-blade plugs or 20 A plugs.
       </p>
@@ -95,14 +117,17 @@
     </section>
 
     <section>
-      <div class="subtitle">NEMA 14-50</div>
+      <div class="subtitle"  id="sec_circle_6"
+      (waIntersectionObservee)="onIntersection($event)">
+        NEMA 14-50
+      </div>
       <p>
         The NEMA 14 devices are four-wire grounding devices (hot-hot-neutral-ground) available in ratings from 15 to 60 A. The voltage rating is 250 V. Of the straight-blade NEMA 14 devices, only the 14-30 and 14-50 are in common use. The 14-30 is used for electric clothes dryers, the 14-50 is used for electric cooking ranges, and either may also be used for home charging of electric vehicles. The NEMA 14 connectors are essentially the replacements for the older NEMA 10 connectors described above, but with the addition of a dedicated grounding connection.
       </p>
-      <p>
+      <p id="p_circle_6_1" (waIntersectionObservee)="onIntersection($event)">
         All NEMA 14 devices offer two hots, a neutral, and a ground, allowing for both 120 and 240 V when supplied by split-phase power, or 120 and 208 V if the supply is three-phase. The 14-30 has a rating of 30 A, and an L-shaped neutral blade. The 14-50 has a rating of 50 A, and a straight neutral blade sized so that it does not mate with 14-30 connectors.
       </p>
-      <p>
+      <p id="p_circle_6_2 "(waIntersectionObservee)="onIntersection($event)">
         NEMA 14-50 devices are frequently found in RV parks, since they are used for "shore power" connections of larger recreational vehicles. Also, it was formerly common to connect mobile homes to utility power via a 14-50 device. Newer applications include Tesla's Mobile Connector for vehicle charging, which formerly recommended the installation of a 14-50 receptacle for home use.
       </p>
       <div class="links">
@@ -112,20 +137,23 @@
 
 
     <section>
-      <div class="subtitle">CHAdeMO</div>
+      <div class="subtitle" id="sec_circle_7"
+      (waIntersectionObservee)="onIntersection($event)">
+        CHAdeMO
+      </div>
       <p>
         CHAdeMO is a fast-charging system for battery electric vehicles, developed starting in 2010 by the CHAdeMO Association, formed by the Tokyo Electric Power Company and five major Japanese automakers. The name is an abbreviation of "CHArge de MOve" (which the organization translates as "charge for moving") and is derived from the Japanese phrase "o CHA deMO ikaga desuka" (おちゃでもいかがですか), translating to English as "How about a cup of tea?", referring to the time it would take to charge a car.
       </p>
-      <p>
+      <p id="p_circle_7_1" (waIntersectionObservee)="onIntersection($event)">
         It competes with the Combined Charging System (CCS), which since 2014 has been required on electric vehicles sold in the European Union, Tesla's proprietary connector used by its Supercharger network outside of Europe, and China's GB/T charging standard.
       </p>
-      <p>
+      <p id="p_circle_7_2" (waIntersectionObservee)="onIntersection($event)">
         As of 2022, CHAdeMO remains popular in Japan, but is being equipped on very few new cars sold in North America or Europe.
       </p>
-      <p>
+      <p id="p_circle_7_3" (waIntersectionObservee)="onIntersection($event)">
         First-generation CHAdeMO connectors deliver up to 62.5 kW by 500 V, 125 A direct currentthrough a proprietary electrical connector, adding about 120 kilometres (75 mi) of range in a half an hour. It has been included in several international vehicle charging standards.
       </p>
-      <p>
+      <p id="p_circle_7_4" (waIntersectionObservee)="onIntersection($event)">
         The second-generation specification allows for up to 400 kW by 1 kV, 400 A direct current.The CHAdeMO Association is currently co-developing with China Electricity Council (CEC) the third-generation standard with the working name of “ChaoJi” that aims to deliver 900 kW.
       </p>
       <div class="links">
@@ -134,17 +162,20 @@
     </section>
 
     <section>
-      <div class="subtitle">Tesla Supercharger</div>
+      <div class="subtitle"
+      id="sec_circle_8" (waIntersectionObservee)="onIntersection($event)">
+        Tesla Supercharger
+      </div>
       <p>
         A Tesla Supercharger is a 480-volt direct current fast-charging technology built by American vehicle manufacturer Tesla, Inc. for electric cars. The Supercharger network was introduced on September 24, 2012, with six Supercharger stations. As of June 2022, Tesla operates 36,165 Superchargers in 3,971 stations worldwide (an average of 9 chargers per station). As of August 2022, there are 1,621 stations in North America, 1,139 in the Asia/Pacific region, and 842 in Europe. Supercharger stalls have a connector to supply electrical power at maximums of 72 kW, 150 kW or 250 kW.
       </p>
-      <p>
+      <p id="p_circle_8_1" (waIntersectionObservee)="onIntersection($event)">
         Tesla Model S was the first car to be able to use the network, followed by the Tesla Model X, Tesla Model 3, and Tesla Model Y. Some Tesla cars have free supercharging for life, some have 100-400 kWh free per year, some have a single 100-400 kWh credit, and some have a monetary credit. Any charges are automatically billed to the Tesla account the car is associated with or to the credit card on file for that account. Usage is typically billed by energy consumed, although stations in jurisdictions that prohibit billing-by-consumption instead bill by time spent charging. An idle fee may be charged (depending on the percent occupancy of the Supercharger station) for continuing to be plugged into the Supercharger after charging has been completed.
       </p>
-      <p>
+      <p id="p_circle_8_2" (waIntersectionObservee)="onIntersection($event)">
         Tesla has taken steps to focus use of the Superchargers on making longer journeys. In late 2017, Tesla restricted commercial, ride-hailing service, taxicab, and government usage of the public Supercharger network, requiring paying on a pay-per-use basis.
       </p>
-      <p>
+      <p id="p_circle_8_3" (waIntersectionObservee)="onIntersection($event)">
         In addition to the Superchargers, Tesla also has Tesla destination chargers, which are located places that a driver may stop for reasons other than charging, such as hotels, restaurants, and shopping centers. These chargers are slower (typically 22 kW) than Superchargers, and are intended to charge cars over several hours. As of September 2019, Tesla has distributed 23,963 destination chargers worldwide.Destination chargers are usually subsidized by the business that operates them as a free amenity to customers.
       </p>
       <div class="links">
@@ -170,14 +201,11 @@
         <div class="section-circle"></div>
         <div class="paragraph-circle"></div>
         <div class="paragraph-circle"></div>
-        <div class="paragraph-circle"></div>
       </div>
 
       <!-- NEMA-5 -->
       <div class="circle-cluster">
         <div class="section-circle"></div>
-        <div class="paragraph-circle"></div>
-        <div class="paragraph-circle"></div>
         <div class="paragraph-circle"></div>
         <div class="paragraph-circle"></div>
         <div class="paragraph-circle"></div>
@@ -188,7 +216,6 @@
       <!-- NEMA-5-15 -->
       <div class="circle-cluster">
         <div class="section-circle"></div>
-        <div class="paragraph-circle"></div>
         <div class="paragraph-circle"></div>
       </div>
 
@@ -203,14 +230,12 @@
         <div class="section-circle"></div>
         <div class="paragraph-circle"></div>
         <div class="paragraph-circle"></div>
-        <div class="paragraph-circle"></div>
       </div>
 
       <!-- CHAdeM0 -->
       <div class="circle-cluster">
         <div class="section-circle"></div>
-        <div class="paragraph-circle"></div>
-        <div class="paragraph-circle"></div>
+        <div [ngClass]="testClass"></div>
         <div class="paragraph-circle"></div>
         <div class="paragraph-circle"></div>
       </div>
@@ -218,7 +243,6 @@
       <!-- Tesla Supercharger-->
       <div class="circle-cluster">
         <div class="section-circle"></div>
-        <div class="paragraph-circle-active"></div>
         <div class="paragraph-circle"></div>
         <div class="paragraph-circle"></div>
         <div class="paragraph-circle"></div>

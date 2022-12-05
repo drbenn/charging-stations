@@ -47,7 +47,6 @@ export class FullMapComponent implements OnInit {
 
   const mapActiveToggle$: Observable<boolean> = this.store.select((state) => state.appState.mapView);
   mapActiveToggle$.subscribe((mapViewToggle: boolean) => {
-    console.log(mapViewToggle);
     this._mapActive = mapViewToggle;
     if (mapViewToggle) {
       this.mapClass = 'map-blur';
@@ -91,7 +90,7 @@ export class FullMapComponent implements OnInit {
     };
     // init map
     let myMap = L.map(this.mapElement.nativeElement, mapOptions).setView([40,-97],4.5);
-    new L.Control.Zoom({position: 'bottomleft'}).addTo(myMap);
+    // new L.Control.Zoom({position: 'bottomleft'}).addTo(myMap);
 
     const southWest = L.latLng(0, -180);
     const northEast = L.latLng(73, -40);
@@ -159,7 +158,6 @@ export class FullMapComponent implements OnInit {
     // heatmapToggle$.subscribe((_heatMapToggle: boolean) =>  this.heatmapActive = _heatMapToggle)
     // let heatmapActive$: Observable<Boolean> = this.store.select((state) => state.appState.mapPageHeatmapActive);
     heatmapToggle$.subscribe((heatmapToggle: boolean) => {
-      console.log(heatmapToggle);
 
     this.heatmapActive = heatmapToggle;
     const heatArray: [][] = this.spawnHeatArray();
@@ -187,7 +185,7 @@ export class FullMapComponent implements OnInit {
     //finds highest amp to calc 3 val of heattuple, intensity, which affects gradient color sensitivity
     // change to reducer
     // this.activeStations.forEach(obj => obj.capacity > maxAmp? maxAmp = obj.capacity : maxAmp = maxAmp)
-    console.log(this.activeStations);
+    // console.log(this.activeStations);
     if (this.activeStations.length > 0) {
       const heatTuple = this.activeStations.forEach(obj => {
         let heatTuple;

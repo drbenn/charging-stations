@@ -112,8 +112,16 @@ a:hover {
 }
 
 .section-circle {
+  background-color: rgba(0, 0, 0, 0.308);
+  border: 0.12rem solid rgb(150, 150, 150);
+  border-radius: 10rem;
+  height: 0.6rem;
+  width: 0.55rem;
+}
+
+.section-circle-active {
   background-color: red;
-  border: 0.15rem solid blue;
+  border: 0.15rem solid rgb(150, 150, 150);
   border-radius: 10rem;
   height: 0.6rem;
   width: 0.6rem;

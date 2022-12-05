@@ -12,6 +12,9 @@ import { AppState } from './shared/state/appState.state';
 import { NavComponent } from './nav/nav.component';
 import { FilterPaneComponent } from './full-map/filter-pane/filter-pane.component';
 import { IntroComponent } from './intro/intro.component';
+import { IntersectionObserverModule } from '@ng-web-apis/intersection-observer';
+
+
 
 
 @NgModule({
@@ -26,6 +29,7 @@ import { IntroComponent } from './intro/intro.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    IntersectionObserverModule,
     NgxsModule.forRoot([AppState]),
     NgxsReduxDevtoolsPluginModule.forRoot(),
   ],
