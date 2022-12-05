@@ -21,7 +21,7 @@ export interface AppStateModel {
   name: 'appState',
   defaults: {
     stations: '',
-    mapView: false,
+    mapView: true,
     heatMapOn: true,
     dropDownOptions: [],
     stationPriceOptions: [],

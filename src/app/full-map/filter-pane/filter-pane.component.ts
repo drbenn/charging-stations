@@ -10,11 +10,17 @@ import { DropDownFilterList } from 'src/app/shared/models/app.models';
 })
 export class FilterPaneComponent implements OnInit {
   burgerClasses= ['line-1', 'line-2', 'line-3'];
-  allObject: DropDownFilterList = {value: 'all',checked : true,viewName: 'All'};
-  connectorOptions: DropDownFilterList[] = [this.allObject];
-  networkOptions: DropDownFilterList[] = [this.allObject];
+  // allObject: DropDownFilterList = {value: 'all',checked : true,viewName: 'All'};
+  // connectorOptions: DropDownFilterList[] = [this.allObject];
+  // networkOptions: DropDownFilterList[] = [this.allObject];
+  // costOptions: DropDownFilterList[] = [
+  //   this.allObject,
+  //   {value: 'charge',checked : true, viewName: 'Charge'},
+  //   {value: 'free',checked : true,viewName: 'Free'}
+  //   ]
+  connectorOptions: DropDownFilterList[] = [];
+  networkOptions: DropDownFilterList[] = [];
   costOptions: DropDownFilterList[] = [
-    this.allObject,
     {value: 'charge',checked : true, viewName: 'Charge'},
     {value: 'free',checked : true,viewName: 'Free'}
     ]
@@ -35,7 +41,7 @@ export class FilterPaneComponent implements OnInit {
   constructor(
     private store: Store
   ) {
-    this.checkedList = [];
+    this.checkedList = ["Charge", "Free"];
   }
 
   ngOnInit(): void {
@@ -47,6 +53,7 @@ export class FilterPaneComponent implements OnInit {
         this.optionsMap(_dropDownOptions);
       }
     })
+
 
   }
 
@@ -61,6 +68,7 @@ export class FilterPaneComponent implements OnInit {
           viewName: option,
         }
         this.connectorOptions.push(connectorObj)
+        this.checkedList.push(option); // to load options as selected on init
       })}
     //network
     if (options[1]) {
@@ -71,19 +79,39 @@ export class FilterPaneComponent implements OnInit {
           viewName: option,
         }
         this.networkOptions.push(networkObj)
+        this.checkedList.push(option); // to load options as selected on init
       })
     }
+
   }
 
 
-  getSelectedValue(status:Boolean,value:String){
+  getSelectedValue(status:Boolean,value:any){
     if(status){
-      this.checkedList.push(value);
-    }else{
-        var index = this.checkedList.indexOf(value);
-        this.checkedList.splice(index,1);
-    }
+      console.log(value);
+      console.log(typeof value);
+      if (!this.checkedList.includes(value)) {
+        this.checkedList.push(value);
+      }
 
+      if (this.checkedList.includes(value)) {
+        let index = this.checkedList.indexOf(value);
+        this.checkedList.splice(index,1);
+
+      }
+      
+      
+      
+      
+      // this.checkedList.push(value);
+    }
+    // else{
+    //     var index = this.checkedList.indexOf(value);
+        
+    // }
+    // console.log(this.currentSelected);
+    console.log(this.checkedList);
+    // TODO populate this.checkedlist with all connectors, networks + "charge" and "free"    
     this.currentSelected = {checked : status,name:value};
 
     //share checked list

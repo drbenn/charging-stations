@@ -25,7 +25,7 @@
             </button>
             <div class="drop-show" *ngIf="showDropDownConnector">
                 <label *ngFor="let option of connectorOptions">
-                    <input type="checkbox" [(ngModel)]="option.checked" checked
+                    <input class="checkbox-custom" type="checkbox" [(ngModel)]="option.checked" checked
                         (change)="getSelectedValue(option.checked,option.viewName)" />
                     <span>{{option.viewName}}</span>
                 </label>
@@ -46,7 +46,7 @@
             </button>
             <div class="drop-show" *ngIf="showDropDownNetwork">
               <label *ngFor="let option of networkOptions">
-                  <input type="checkbox" [(ngModel)]="option.checked" checked
+                  <input class="checkbox-custom"  type="checkbox" [(ngModel)]="option.checked" checked
                       (change)="getSelectedValue(option.checked,option.viewName)" />
                   <span>{{option.viewName}}</span>
               </label>
@@ -67,7 +67,7 @@
             </button>
             <div class="drop-show" *ngIf="showDropDownCost">
                 <label *ngFor="let option of costOptions">
-                    <input type="checkbox" [(ngModel)]="option.checked" checked
+                    <input class="checkbox-custom"  type="checkbox" [(ngModel)]="option.checked" checked
                         (change)="getSelectedValue(option.checked,option.viewName)" />
                     <span>{{option.viewName}}</span>
                 </label>

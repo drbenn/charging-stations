@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 })
 export class IntroComponent implements OnInit, AfterViewInit{
   @ViewChild('sec_circle_1', {static: true}) sec_circle_1: ElementRef;
-  testClass = 'paragraph-circle'
+  testClass = {junk:'paragraph-circle'}
 
 
   _mapActive:boolean;
@@ -65,7 +65,7 @@ export class IntroComponent implements OnInit, AfterViewInit{
     // console.log(jabba);
 
     if (jabba[0] === "p_circle_7_2" && !inView && boundY > 0) {
-      this.testClass = 'paragraph-circle'
+      this.testClass.junk = 'paragraph-circle'
       // console.log(event);
       console.log(`NOT : ${ratio}`);
 
@@ -73,15 +73,15 @@ export class IntroComponent implements OnInit, AfterViewInit{
     }
 
     if (jabba[0] === "p_circle_7_2" && inView) {
-      this.testClass = 'paragraph-circle-active'
+      this.testClass.junk = 'paragraph-circle-active'
       console.log(`YES: ${ratio}`);
 
 
 
     // console.log(event);
     }
-    console.log(event);
-    console.log(boundY);
+    // console.log(event);
+    // console.log(boundY);
 
     // if (event[0].target.id === "p_circle_7_2") {
     //   this.testClass = 'paragraph-circle-active'
