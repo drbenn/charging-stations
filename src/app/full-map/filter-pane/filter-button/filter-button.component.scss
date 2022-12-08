@@ -1,0 +1,42 @@
+.button {
+  // border: 6px solid var(--filter-button);
+  box-sizing: border-box;
+  background-color: var(--filter-button);
+  box-shadow: rgba(0, 0, 0, 0.335) 0px 2px 4px 0px inset;
+  color: whitesmoke;
+  font-size: 1.0rem;
+  font-weight: 200;
+  padding: 0.25rem 1rem;
+  border-radius: 0.3rem;
+  margin: 0rem 0.5rem 0.5rem 0rem;
+  transition: all 0.15s ease-in;
+  cursor: pointer;
+}
+
+.button:hover {
+  filter: brightness(120%);
+  background-color: var(--filter-button-hover);
+  transition: all 0.15s ease-in;
+}
+
+.button-inactive {
+  // border: 6px solid var(--filter-button);
+  box-sizing: border-box;
+  background-color: var(--filter-button-inactive);
+  // box-shadow: rgba(0, 0, 0, 0.335) 0px 2px 4px 0px inset;
+  color: whitesmoke;
+  font-size: 1.0rem;
+  font-weight: 200;
+  padding: 0.25rem 1rem;
+  border-radius: 0.3rem;
+  margin: 0rem 0.5rem 0.5rem 0rem;
+  transition: all 0.15s ease-in;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+}
+
+.button-inactive:hover {
+  filter: brightness(120%);
+  background-color: var(--filter-button-inactive-hover);
+  transition: all 0.15s ease-in;
+}

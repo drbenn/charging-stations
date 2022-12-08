@@ -18,7 +18,12 @@ export interface StationModel {
 
 
 export interface FilterListObject {
-  connectors: string[],
-  networks: string[],
-  costs: string[],
+  connectors: FilterOptions[],
+  networks: FilterOptions[],
+  costs: FilterOptions[],
+}
+
+export interface FilterOptions {
+  name: string;
+  active: boolean;
 }

@@ -19,10 +19,16 @@
         </div>
 
         <div class="option-button-container">
-          <div class="filter-button" *ngFor="let option of connectorOptions"
+          <!-- <div class="filter-button-inactive" *ngFor="let option of connectorOptions"
           (click)="onFilterButtonClick(option)">
-            {{option}}
-          </div>
+            {{option.name}}
+          </div> -->
+          <app-filter-button
+            *ngFor="let option of connectorOptions"
+            (click)="onFilterButtonClick(option)"
+            [filterName]="option.name"
+            [active]="option.active"
+            ></app-filter-button>
 
 
 
@@ -51,7 +57,7 @@
         <div class="option-button-container">
           <div class="filter-button" *ngFor="let option of networkOptions"
           (click)="onFilterButtonClick(option)">
-            {{option}}
+            {{option.name}}
           </div>
 
 
@@ -81,7 +87,7 @@
         <div class="option-button-container">
           <div class="filter-button" *ngFor="let option of costOptions"
           (click)="onFilterButtonClick(option)">
-            {{option}}
+            {{option.name}}
           </div>
 
 

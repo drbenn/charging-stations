@@ -13,6 +13,7 @@ import { NavComponent } from './nav/nav.component';
 import { FilterPaneComponent } from './full-map/filter-pane/filter-pane.component';
 import { IntroComponent } from './intro/intro.component';
 import { IntersectionObserverModule } from '@ng-web-apis/intersection-observer';
+import { FilterButtonComponent } from './full-map/filter-pane/filter-button/filter-button.component';
 
 
 
@@ -22,7 +23,8 @@ import { IntersectionObserverModule } from '@ng-web-apis/intersection-observer';
     FullMapComponent,
     NavComponent,
     FilterPaneComponent,
-    IntroComponent
+    IntroComponent,
+    FilterButtonComponent
   ],
   imports: [
     BrowserModule,
