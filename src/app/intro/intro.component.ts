@@ -11,8 +11,19 @@ import { Observable } from 'rxjs';
   styleUrls: ['./intro.component.scss']
 })
 export class IntroComponent implements OnInit, AfterViewInit{
-  @ViewChild('sec_circle_1', {static: true}) sec_circle_1: ElementRef;
+  // @ViewChild('sec_circle_1', {static: true}) sec_circle_1: ElementRef;
   testClass = 'paragraph-circle'
+
+  spyClass = {
+    sec_circle_1:'section_circle',
+    sec_circle_2:'section_circle',
+    sec_circle_3:'section_circle',
+    sec_circle_4:'section_circle',
+    sec_circle_5:'section_circle',
+    sec_circle_6:'section_circle',
+    sec_circle_7:'section_circle',
+    sec_circle_8:'section_circle',
+  }
 
 
   _mapActive:boolean;
@@ -64,28 +75,35 @@ export class IntroComponent implements OnInit, AfterViewInit{
     let jabba = [target, inView]
     // console.log(jabba);
 
-    if (jabba[0] === "p_circle_7_2" && !inView && boundY > 0) {
-      this.testClass = 'paragraph-circle'
-      // console.log(event);
-      console.log(`NOT : ${ratio}`);
-
+    if (target[0] === 'p' && target[17] === undefined && !inView && boundY > 0) {
+      this.spyClass[target] = 'section-circle'
+      console.log('nope');
 
     }
 
-    if (jabba[0] === "p_circle_7_2" && inView) {
-      this.testClass = 'paragraph-circle-active'
-      console.log(`YES: ${ratio}`);
+    if (target[0] === 'p' && target[17] !== undefined && inView) {
+      this.spyClass[target] = 'section-circle-active'
+      console.log('yep');
 
-
-
-    // console.log(event);
     }
-    console.log(event);
-    console.log(boundY);
 
-    // if (event[0].target.id === "p_circle_7_2") {
-    //   this.testClass = 'paragraph-circle-active'
+    // if (jabba[0] === "p_circle_3_1" && !inView && boundY > 0) {
+    //   this.testClass = 'paragraph-circle'
+    //   // console.log(event);
+    //   console.log(`NOT : ${ratio}`);
+    //   console.log(this.testClass.length);
+
     // }
+
+    // if (jabba[0] === "p_circle_3_1" && inView) {
+    //   this.testClass = 'paragraph-circle-active'
+    //   console.log(`YES: ${ratio}`);
+    //   // console.log(target[0]);
+    //   // console.log(target[11]);
+    //   // console.log(target[13]);
+    //   console.log(this.testClass.length);
+    // }
+
 
   }
 

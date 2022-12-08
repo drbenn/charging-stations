@@ -193,20 +193,20 @@ waIntersectionObserver waIntersectionThreshold="0.5">
 
       <!-- General -->
       <div class="circle-cluster">
-        <div class="section-circle"></div>
+        <div [ngClass]="spyClass"></div>
       </div>
 
       <!-- SAE J1772 -->
       <div class="circle-cluster">
-        <div class="section-circle"></div>
+        <div [ngClass]="spyClass.sec_circle_2"></div>
         <div class="paragraph-circle"></div>
         <div class="paragraph-circle"></div>
       </div>
 
       <!-- NEMA-5 -->
       <div class="circle-cluster">
-        <div class="section-circle"></div>
-        <div class="paragraph-circle"></div>
+        <div [ngClass]="spyClass.sec_circle_3"></div>
+        <div [ngClass]="testClass"></div>
         <div class="paragraph-circle"></div>
         <div class="paragraph-circle"></div>
         <div class="paragraph-circle"></div>
@@ -215,34 +215,34 @@ waIntersectionObserver waIntersectionThreshold="0.5">
 
       <!-- NEMA-5-15 -->
       <div class="circle-cluster">
-        <div class="section-circle"></div>
+        <div [ngClass]="spyClass.sec_circle_4"></div>
         <div class="paragraph-circle"></div>
       </div>
 
 
       <!-- NEMA-5-20 -->
       <div class="circle-cluster">
-        <div class="section-circle"></div>
+        <div [ngClass]="spyClass.sec_circle_5"></div>
       </div>
 
       <!-- NEMA-14-50 -->
       <div class="circle-cluster">
-        <div class="section-circle"></div>
+        <div [ngClass]="spyClass.sec_circle_6"></div>
         <div class="paragraph-circle"></div>
         <div class="paragraph-circle"></div>
       </div>
 
       <!-- CHAdeM0 -->
       <div class="circle-cluster">
-        <div class="section-circle"></div>
-        <div [ngClass]="testClass"></div>
+        <div [ngClass]="spyClass.sec_circle_7"></div>
+        <div class="paragraph-circle"></div>
         <div class="paragraph-circle"></div>
         <div class="paragraph-circle"></div>
       </div>
 
       <!-- Tesla Supercharger-->
       <div class="circle-cluster">
-        <div class="section-circle"></div>
+        <div [ngClass]="spyClass.sec_circle_8"></div>
         <div class="paragraph-circle"></div>
         <div class="paragraph-circle"></div>
         <div class="paragraph-circle"></div>
