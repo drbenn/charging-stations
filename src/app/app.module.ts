@@ -16,7 +16,6 @@ import { IntersectionObserverModule } from '@ng-web-apis/intersection-observer';
 
 
 
-
 @NgModule({
   declarations: [
     AppComponent,

@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./intro.component.scss']
 })
 export class IntroComponent implements OnInit, AfterViewInit{
-  // @ViewChild('sec_circle_1', {static: true}) sec_circle_1: ElementRef;
+  @ViewChild('sec_circle_1', {static: true}) sec_circle_1: ElementRef;
   testClass = 'paragraph-circle'
 
   spyClass = {
@@ -75,25 +75,23 @@ export class IntroComponent implements OnInit, AfterViewInit{
     let jabba = [target, inView]
     // console.log(jabba);
 
-    if (target[0] === 'p' && target[17] === undefined && !inView && boundY > 0) {
-      this.spyClass[target] = 'section-circle'
-      console.log('nope');
+    if (jabba[0] === "p_circle_7_2" && !inView && boundY > 0) {
+      this.testClass = 'paragraph-circle'
+      // console.log(event);
+      console.log(`NOT : ${ratio}`);
+
 
     }
 
-    if (target[0] === 'p' && target[17] !== undefined && inView) {
-      this.spyClass[target] = 'section-circle-active'
-      console.log('yep');
+    if (jabba[0] === "p_circle_7_2" && inView) {
+      this.testClass = 'paragraph-circle-active'
+      console.log(`YES: ${ratio}`);
+
+
 
     }
-
-    // if (jabba[0] === "p_circle_3_1" && !inView && boundY > 0) {
-    //   this.testClass = 'paragraph-circle'
-    //   // console.log(event);
-    //   console.log(`NOT : ${ratio}`);
-    //   console.log(this.testClass.length);
-
-    // }
+    console.log(event);
+    console.log(boundY);
 
     // if (jabba[0] === "p_circle_3_1" && inView) {
     //   this.testClass = 'paragraph-circle-active'

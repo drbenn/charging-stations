@@ -9,8 +9,7 @@ import { LoadStations, SetFilterOptions } from '../state/appState.actions';
   })
 
 export class DataService {
-
-
+  
   constructor(
     private httpClient: HttpClient,
     private store:Store
@@ -27,27 +26,29 @@ export class DataService {
 
 
   private getFilterOptions(data) {
-  let pricing = []
-  let pricingOptions = data.forEach((obj) => pricing.push(obj.pricing))
-  let pricingSet = new Set(pricing)
-  let pricingUniqueArray = Array.from(pricingSet);
+    let connects = []
+    data.forEach((obj) => {
+      if(obj.connectorTypes) {
+        connects.push(obj.connectorTypes)
+      }
+    })
+    connects = connects.flat()
+    let connectSet = new Set(connects)
+    let connectUniqueArray = Array.from(connectSet);
+    
 
-  let networks = []
-  let networkOptions = data.forEach((obj) => networks.push(obj.network))
-  let networkSet = new Set(networks)
-  let networkUniqueArray = Array.from(networkSet);
+    let networks = []
+    data.forEach((obj) => networks.push(obj.network))
+    let networkSet = new Set(networks)
+    let networkUniqueArray = Array.from(networkSet);
 
 
-  let connects = []
-  let connectsOptions = data.forEach((obj) => {
-    if(obj.connectorTypes) {
-      connects.push(obj.connectorTypes)
-    }
-  })
-  connects = connects.flat()
-  let connectSet = new Set(connects)
-  let connectUniqueArray = Array.from(connectSet);
+    let pricing = []
+    data.forEach((obj) => pricing.push(obj.pricing))
+    let pricingSet = new Set(pricing)
+    let pricingUniqueArray = Array.from(pricingSet);
 
-  this.store.dispatch(new SetFilterOptions([pricingUniqueArray, networkUniqueArray, connectUniqueArray]));
+
+    this.store.dispatch(new SetFilterOptions([ connectUniqueArray, networkUniqueArray, pricingUniqueArray ]));
   }
 }

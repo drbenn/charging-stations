@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Action, State, StateContext, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
+import { FilterListObject } from '../models/app.models';
 import { DataService } from '../services/data.service';
 import { LoadStations, SetFilterOptions, ToggleHeat, ToggleMapView } from './appState.actions';
 
@@ -11,7 +12,7 @@ export interface AppStateModel {
   stations: any;
   mapView: boolean;
   heatMapOn: boolean;
-  dropDownOptions: string[][],
+  filterOptions: FilterListObject,
   stationPriceOptions: string[],
   networkOptions: string[],
   connectorOptions: string[],
@@ -21,9 +22,9 @@ export interface AppStateModel {
   name: 'appState',
   defaults: {
     stations: '',
-    mapView: false,
+    mapView: true,
     heatMapOn: true,
-    dropDownOptions: [],
+    filterOptions: {connectors:[], networks:[], costs:[]},
     stationPriceOptions: [],
     networkOptions: [],
     connectorOptions: [],
@@ -70,11 +71,11 @@ export class AppState {
     ctx: StateContext<AppStateModel>,
     payload: { options: string[][] }
   ) {
-    ctx.patchState({
-      dropDownOptions: payload.options,
-      stationPriceOptions: payload.options[0],
-      networkOptions: payload.options[1],
-      connectorOptions: payload.options[2],
-      });
+    let optionsObject: FilterListObject = {
+      connectors: payload.options[0],
+      networks: payload.options[1],
+      costs: ["Charge", "Free"]
+    }
+    ctx.patchState({ filterOptions: optionsObject });
   }
 }

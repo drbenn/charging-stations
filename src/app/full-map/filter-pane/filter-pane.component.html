@@ -17,7 +17,16 @@
         <div class="option-title">
           Connector
         </div>
-        <div class="option-dropdown-container">
+
+        <div class="option-button-container">
+          <div class="filter-button" *ngFor="let option of connectorOptions">
+            {{option}}
+          </div>
+
+
+
+        </div>
+        <!-- <div class="option-dropdown-container">
           <div (mouseleave)="showDropDownConnector = false">
             <button class="drop-toggle btn flat" (click)="showDropDownConnector=!showDropDownConnector">
                 <span>Select</span>
@@ -25,20 +34,28 @@
             </button>
             <div class="drop-show" *ngIf="showDropDownConnector">
                 <label *ngFor="let option of connectorOptions">
-                    <input type="checkbox" [(ngModel)]="option.checked" checked
+                    <input class="checkbox-custom" type="checkbox" [(ngModel)]="option.checked" checked
                         (change)="getSelectedValue(option.checked,option.viewName)" />
                     <span>{{option.viewName}}</span>
                 </label>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
 
       <div class="filter-section">
         <div class="option-title">
           Network
         </div>
-        <div class="option-dropdown-container">
+        <div class="option-button-container">
+          <div class="filter-button" *ngFor="let option of networkOptions">
+            {{option}}
+          </div>
+
+
+
+        </div>
+        <!-- <div class="option-dropdown-container">
           <div (mouseleave)="showDropDownNetwork = false">
             <button class="drop-toggle btn flat" (click)="showDropDownNetwork=!showDropDownNetwork">
                 <span>Select</span>
@@ -46,20 +63,28 @@
             </button>
             <div class="drop-show" *ngIf="showDropDownNetwork">
               <label *ngFor="let option of networkOptions">
-                  <input type="checkbox" [(ngModel)]="option.checked" checked
+                  <input class="checkbox-custom"  type="checkbox" [(ngModel)]="option.checked" checked
                       (change)="getSelectedValue(option.checked,option.viewName)" />
                   <span>{{option.viewName}}</span>
               </label>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
 
       <div class="filter-section">
         <div class="option-title">
-          Cost
+          Cost-stuff
         </div>
-        <div class="option-dropdown-container">
+        <div class="option-button-container">
+          <div class="filter-button" *ngFor="let option of costOptions">
+            {{option}}
+          </div>
+
+
+
+        </div>
+        <!-- <div class="option-dropdown-container">
           <div (mouseleave)="showDropDownCost = false">
             <button class="drop-toggle btn flat" (click)="showDropDownCost=!showDropDownCost">
                 <span>Select</span>
@@ -67,13 +92,14 @@
             </button>
             <div class="drop-show" *ngIf="showDropDownCost">
                 <label *ngFor="let option of costOptions">
-                    <input type="checkbox" [(ngModel)]="option.checked" checked
+                    <input class="checkbox-custom"  type="checkbox" [(ngModel)]="option.checked" checked
                         (change)="getSelectedValue(option.checked,option.viewName)" />
                     <span>{{option.viewName}}</span>
                 </label>
             </div>
           </div>
-        </div>
+        </div> -->
+
       </div>
 
     </div>

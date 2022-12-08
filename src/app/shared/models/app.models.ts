@@ -17,8 +17,8 @@ export interface StationModel {
 }
 
 
-export interface DropDownFilterList {
-  value: string,
-  checked : boolean,
-  viewName?: string,
+export interface FilterListObject {
+  connectors: string[],
+  networks: string[],
+  costs: string[],
 }
