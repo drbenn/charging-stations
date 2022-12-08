@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { FilterListObject } from 'src/app/shared/models/app.models';
+import { UpdateSelectedFilterOptions } from 'src/app/shared/state/appState.actions';
 // import { DropDownFilterList } from 'src/app/shared/models/app.models';
 
 @Component({
@@ -40,9 +41,11 @@ export class FilterPaneComponent implements OnInit {
 
 
 
-  connectorOptions: string[];
-  networkOptions: string[];
-  costOptions: string[];
+  connectorOptions: string[] = [];
+  networkOptions: string[] = [];
+  costOptions: string[] = [];
+
+  selectedOptions: string[] = [];
 
   // selectedFilters: string[] = ["Charge", "Free"]
 
@@ -57,13 +60,20 @@ export class FilterPaneComponent implements OnInit {
       (state) => state.appState.filterOptions);
 
     filterOptions$.subscribe((_filterOptions:FilterListObject) => {
-      if (_filterOptions) {
+      if (_filterOptions && this.connectorOptions.length === 0) {
         console.log(_filterOptions);
-        
+
+        // Set filter options available for UI
         this.connectorOptions = _filterOptions.connectors;
         this.networkOptions = _filterOptions.networks;
         this.costOptions = _filterOptions.costs;
-        
+
+        // Set all filter options as active
+        _filterOptions.connectors.forEach((option) => this.selectedOptions.push(option))
+        _filterOptions.networks.forEach((option) => this.selectedOptions.push(option))
+        _filterOptions.costs.forEach((option) => this.selectedOptions.push(option))
+        console.log(this.selectedOptions);
+
       }
     })
 
@@ -116,19 +126,19 @@ export class FilterPaneComponent implements OnInit {
 //         this.checkedList.splice(index,1);
 
 //       }
-      
-      
-      
-      
+
+
+
+
 //       // this.checkedList.push(value);
 //     }
 //     // else{
 //     //     var index = this.checkedList.indexOf(value);
-        
+
 //     // }
 //     // console.log(this.currentSelected);
 //     console.log(this.checkedList);
-//     // TODO populate this.checkedlist with all connectors, networks + "charge" and "free"    
+//     // TODO populate this.checkedlist with all connectors, networks + "charge" and "free"
 //     this.currentSelected = {checked : status,name:value};
 
 //     //share checked list
@@ -148,6 +158,20 @@ export class FilterPaneComponent implements OnInit {
  filterToggle() {
   console.log('filter toggle clicked');
 
+ }
+
+ onFilterButtonClick(option) {
+
+  if (this.selectedOptions.includes(option)) {
+    const newOptions = this.selectedOptions.filter(item => item !== option)
+    this.selectedOptions = newOptions;
+    // TODO - activate class for flat button
+
+  } else {
+    this.selectedOptions.push(option)
+    // TODO - activate class for sunk button
+  }
+  this.store.dispatch(new UpdateSelectedFilterOptions(this.selectedOptions))
  }
 
  setBurgerClass(event:any) {

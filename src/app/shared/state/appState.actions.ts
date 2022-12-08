@@ -18,3 +18,8 @@ export class SetFilterOptions {
   static readonly type = '[Filter Pane] all filter options to state';
   constructor(public options: string[][]) {}
 }
+
+export class UpdateSelectedFilterOptions {
+  static readonly type = '[Filter Pane] selected filter options to state';
+  constructor(public options: string[]) {}
+}

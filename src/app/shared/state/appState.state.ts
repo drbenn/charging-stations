@@ -4,7 +4,7 @@ import { Action, State, StateContext, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { FilterListObject } from '../models/app.models';
 import { DataService } from '../services/data.service';
-import { LoadStations, SetFilterOptions, ToggleHeat, ToggleMapView } from './appState.actions';
+import { LoadStations, SetFilterOptions, ToggleHeat, ToggleMapView, UpdateSelectedFilterOptions } from './appState.actions';
 
 
 
@@ -13,9 +13,7 @@ export interface AppStateModel {
   mapView: boolean;
   heatMapOn: boolean;
   filterOptions: FilterListObject,
-  stationPriceOptions: string[],
-  networkOptions: string[],
-  connectorOptions: string[],
+  selectedFilterOptions:string[],
 }
 
 @State<AppStateModel>({
@@ -25,9 +23,7 @@ export interface AppStateModel {
     mapView: true,
     heatMapOn: true,
     filterOptions: {connectors:[], networks:[], costs:[]},
-    stationPriceOptions: [],
-    networkOptions: [],
-    connectorOptions: [],
+    selectedFilterOptions: [],
   },
 })
 @Injectable()
@@ -77,5 +73,13 @@ export class AppState {
       costs: ["Charge", "Free"]
     }
     ctx.patchState({ filterOptions: optionsObject });
+  }
+
+  @Action(UpdateSelectedFilterOptions)
+  updateSelectedFilterOptions(
+    ctx: StateContext<AppStateModel>,
+    payload: { selectedOptions: string[] }
+  ) {
+    ctx.patchState({ selectedFilterOptions: payload.selectedOptions });
   }
 }
