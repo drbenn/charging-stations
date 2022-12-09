@@ -54,10 +54,15 @@
           Network
         </div>
         <div class="option-button-container">
-          <div class="filter-button" *ngFor="let option of networkOptions"
+          <!-- <div class="filter-button" *ngFor="let option of networkOptions"
           (click)="onFilterButtonClick(option)">
             {{option.name}}
-          </div>
+          </div> -->
+          <app-filter-button
+          *ngFor="let option of networkOptions"
+          (click)="onFilterButtonClick(option)"
+          [filterName]="option"
+          ></app-filter-button>
 
 
 
@@ -84,10 +89,15 @@
           Cost-stuff
         </div>
         <div class="option-button-container">
-          <div class="filter-button" *ngFor="let option of costOptions"
+          <!-- <div class="filter-button" *ngFor="let option of costOptions"
           (click)="onFilterButtonClick(option)">
             {{option.name}}
-          </div>
+          </div> -->
+          <app-filter-button
+          *ngFor="let option of costOptions"
+          (click)="onFilterButtonClick(option)"
+          [filterName]="option"
+          ></app-filter-button>
 
 
 

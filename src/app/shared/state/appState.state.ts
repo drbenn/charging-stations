@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
-import { Observable } from 'rxjs';
+import { connect, Observable } from 'rxjs';
 import { FilterListObject, StationModel } from '../models/app.models';
 import { DataService } from '../services/data.service';
 import { LoadStations, SetFilterOptions, ToggleHeat, ToggleMapView, UpdateSelectedFilterOptions } from './appState.actions';
@@ -25,8 +25,8 @@ export interface AppStateModel {
     mapView: true,
     heatMapOn: true,
     filterOptions: {connectors:[], networks:[], costs:[]},
-    selectedFilterOptions: ["J1772", "NEMA520","CHADEMO", "J1772COMBO", "NEMA515", "TESLA",  "NEMA1450","Non-Networked","SHELL_RECHARGE","AMPUP","ChargePoint Network","EVRANGE","POWERFLEX",
-    "EVCS","Tesla Destination","Tesla","Blink Network","FCN","Charge","Free"],
+    selectedFilterOptions: ["J1772", "NEMA520","CHADEMO", "J1772COMBO", "NEMA515", "TESLA",  "NEMA1450","Non-Networked","SHELL_RECHARGE","AMPUP","ChargePoint","EVRANGE","POWERFLEX",
+    "EVCS","Tesla Destination","Tesla","Blink","FCN","Pay","Free"],
   },
 })
 @Injectable()
@@ -41,21 +41,62 @@ export class AppState {
 
   @Selector()
   static filteredStations(state:AppStateModel) {
-    console.log(state);
+    // console.log(state.selectedFilterOptions);
+    if (state.selectedFilterOptions.length === 20) {
+      return state.stations;
+    }
+// some determines if at least 1 item in an array meets a condition
+// so station.connectorTypes meets condition of being included in selectedStations array
+    // if (state.selectedFilterOptions.length < 20) {
+    //   let newStations = state.stations.filter((station) => {
+    //     // return station.network === "AMPUP"
+    //       // if (station.connectorTypes.includes('TESLA')) {
+    //       //   console.log('fuck you');
+    //       //   return true
+    //       // }
+    //       console.log(station.connectorTypes);
 
-    return state.stations.filter((station) => {
-      // return station.network === "AMPUP"
-      let acceptedStations: boolean =
-      this.connectorSubFilter(station, state.selectedFilterOptions)
+    //       return station.connectorTypes === "TESLA"
+    //   })
+    //   console.log('newStations State Selector Return');
+    //   console.log(newStations);
+    //   return newStations;
 
-      return acceptedStations;
+    // }
+    else {
+      console.log("else");
+      console.log(state.selectedFilterOptions);
+
+      const filteredStations: StationModel[] = state.stations.filter((station) => {
+        // let free = station.pricing.search("Free") ? 'Free' : 'Pay';
+        // console.log('free?');
+        // console.log(free);
+        // SHIT WORKS TO FILTER NETWORK
+        // let shit = state.selectedFilterOptions.some(sOption => station.network.includes(sOption))
+        // let fuck = state.selectedFilterOptions.some(sOption => station.connectorTypes.forEach(connector => connector.includes(sOption)))
+
+      //   let shit = this.networkSubFilter(station,state.selectedFilterOptions);
+      //   console.log(shit);
+      //  return shit}
 
 
-    })
+
+        let twat = this.costSubFilter(station,state.selectedFilterOptions);
+
+        return twat}
+
+        )
+
+
+      console.log(filteredStations);
+
+      return filteredStations;
+    }
 
 
 
-    // return allStations;
+
+    // return state.stations;
   }
 
 
@@ -92,11 +133,9 @@ export class AppState {
     ctx: StateContext<AppStateModel>,
     payload: { options: string[][] }
   ) {
-    console.log(payload.options);
-
     let connectorOptions:string[] = payload.options[0]
     let networkOptions: string[] = payload.options[1]
-    let costOptions: string[] = ["Charge", "Free"]
+    let costOptions: string[] = ["Pay", "Free"]
     let optionsObject: FilterListObject = {
       connectors: connectorOptions,
       networks: networkOptions,
@@ -113,14 +152,51 @@ export class AppState {
     ctx.patchState({ selectedFilterOptions: payload.selectedOptions });
   }
 
-  static connectorSubFilter(station:StationModel, selectedFilters:string[]):boolean {
-    console.log(station);
-    console.log(selectedFilters);
+  // static connectorSubFilter(station:StationModel, selectedFilters:string[]):boolean {
+  //   // console.log(station);
+  //   // console.log(selectedFilters);
+  //   if (station.connectorTypes === "NEMA1450") {
+  //     console.log('in subfilter');
+
+  //     console.log(station);
+  //     console.log(selectedFilters);
+  //   }
+
+  //   let stationConnector = station.connectorTypes
+  //   return selectedFilters.includes(stationConnector);
 
 
-      return  selectedFilters.some(selected => station.connectorTypes.includes(selected))
-  }
+      // return  selectedFilters.some(selected => station.connectorTypes.includes(selected))
+//   }
   static networkSubFilter(station:StationModel, selectedFilters:string[]):boolean {
-    return  selectedFilters.some(selected => station.network.includes(selected))
-}
+    // return  selectedFilters.some(selected => station.network.includes(selected))
+    // console.log("FUCKING ANYTHING");
+
+    return selectedFilters.some(sOption => station.network.includes(sOption))
+  }
+
+  static costSubFilter(station:StationModel, selectedFilters:string[]) {
+    // return  selectedFilters.some(selected => station.network.includes(selected))
+    console.log("FUCKING ANYTHING");
+    let cost = station.pricing.search("Free") ? 'Free' : 'Pay';
+
+    const both = selectedFilters.includes("Free") && selectedFilters.includes("Pay");
+    const freeOnly = selectedFilters.includes("Free") && !selectedFilters.includes("Pay");
+    const payOnly = !selectedFilters.includes("Free") && selectedFilters.includes("Pay");
+    const neither = !selectedFilters.includes("Free") && !selectedFilters.includes("Pay");
+
+    // return selectedFilters.some(sOption => station)
+    if (neither) {
+      return !station
+    } else if (payOnly && cost === 'Pay') {
+      return station
+    } else if (freeOnly && cost === 'Free') {
+      return station
+    } else {
+      return !station
+    }
+
+
+
+  }
 }

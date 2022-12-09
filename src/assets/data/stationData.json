@@ -8413,7 +8413,7 @@
     ],
     "owner": "N/A",
     "status": "N/A",
-    "network": "ChargePoint Network",
+    "network": "ChargePoint",
     "pricing": null
   },
   {
@@ -9890,7 +9890,7 @@
     ],
     "owner": "N/A",
     "status": "N/A",
-    "network": "ChargePoint Network",
+    "network": "ChargePoint",
     "pricing": "Free for first 3 hours; $3 per hour after"
   },
   {
@@ -9909,7 +9909,7 @@
     ],
     "owner": "N/A",
     "status": "N/A",
-    "network": "ChargePoint Network",
+    "network": "ChargePoint",
     "pricing": "3 hours free, $3 per hour"
   },
   {
@@ -10080,7 +10080,7 @@
     ],
     "owner": "N/A",
     "status": "N/A",
-    "network": "ChargePoint Network",
+    "network": "ChargePoint",
     "pricing": "Free"
   },
   {
@@ -11662,7 +11662,7 @@
     ],
     "owner": "N/A",
     "status": "N/A",
-    "network": "ChargePoint Network",
+    "network": "ChargePoint",
     "pricing": null
   },
   {
@@ -11681,7 +11681,7 @@
     ],
     "owner": "N/A",
     "status": "N/A",
-    "network": "ChargePoint Network",
+    "network": "ChargePoint",
     "pricing": null
   },
   {
@@ -11700,7 +11700,7 @@
     ],
     "owner": "N/A",
     "status": "N/A",
-    "network": "ChargePoint Network",
+    "network": "ChargePoint",
     "pricing": null
   },
   {
@@ -13606,7 +13606,7 @@
     ],
     "owner": "N/A",
     "status": "N/A",
-    "network": "ChargePoint Network",
+    "network": "ChargePoint",
     "pricing": "Free"
   },
   {
@@ -13625,7 +13625,7 @@
     ],
     "owner": "N/A",
     "status": "N/A",
-    "network": "ChargePoint Network",
+    "network": "ChargePoint",
     "pricing": "Free"
   },
   {
@@ -14520,7 +14520,7 @@
     ],
     "owner": "N/A",
     "status": "N/A",
-    "network": "ChargePoint Network",
+    "network": "ChargePoint",
     "pricing": null
   },
   {
@@ -18558,7 +18558,7 @@
     ],
     "owner": "N/A",
     "status": "N/A",
-    "network": "Tesla",
+    "network": "Tesla Destination",
     "pricing": null
   },
   {
@@ -19261,7 +19261,7 @@
     ],
     "owner": "N/A",
     "status": "N/A",
-    "network": "Blink Network",
+    "network": "Blink",
     "pricing": "FREE charging; Garage daily rate = $1/hour, $7 max, but free after 6 p.m. on weekdays and throughout the weekend - except for specific special events."
   },
   {
@@ -19375,7 +19375,7 @@
     ],
     "owner": "N/A",
     "status": "N/A",
-    "network": "Tesla",
+    "network": "Tesla Destination",
     "pricing": null
   },
   {

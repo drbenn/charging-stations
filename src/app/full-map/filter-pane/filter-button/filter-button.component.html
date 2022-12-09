@@ -1,5 +1,7 @@
-<div
-  class="button" [ngClass]="{'button-inactive': !isFilterOn }"
-  (click)="toggleClass()">{{filterName}}
+<div class="button-outside-edge" (click)="toggleClass()">
+  <div
+    class="button" [ngClass]="{'button-inactive': !isFilterOn }"
+    >{{filterName}}
+  </div>
 </div>
 

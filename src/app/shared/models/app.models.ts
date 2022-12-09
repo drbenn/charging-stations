@@ -9,7 +9,7 @@ export interface StationModel {
   accessType:string,
   accessTime:string,
   fuelType: string,
-  connectorTypes: string,
+  connectorTypes: string[],
   owner: string,
   status: string,
   network: string,

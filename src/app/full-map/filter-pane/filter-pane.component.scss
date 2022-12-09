@@ -264,7 +264,26 @@
     box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
     position: relative;
     z-index: -90;
-    transition: 1s ease-in-out;
+    // transition: 4s ease-in-out;
+    animation: line-2-anim 2s linear;
+  }
+
+  @keyframes line-2-anim {
+    0% {
+      background-color: transparent;
+    }
+    40% {
+      background-color: transparent;
+    }
+    100% {
+      width: 65%;
+      height: 1px;
+      background-color: var(--burger-color);
+      box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+      position: relative;
+      z-index: -90;
+    }
+
   }
   .line-3 {
     width: 70%;
@@ -290,15 +309,66 @@
     transition: 0.8s ease-in-out;
   }
   .line-2-x {
-    width: 0%;
-    height: 0px;
+    width: 30.8rem;
+    height: 1px;
     background-color: transparent;
     box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px,;
-    transform: translate(2.5rem, 0rem);
-    position: relative;
-    z-index: -90;
-    transition: 1.0s ease-in-out;
+    // transform: translate(-3.5rem, 0rem);
+    // width: 20rem;
+    // position: relative;
+    // z-index: -90;
+    // transition: 1.0s ease-in-out;
+    transform: translate(-19.82rem,17.3rem) rotate(-90deg);
+    animation: line-2-expand-anim 1.5s linear;
   }
+
+  @keyframes line-2-expand-anim {
+    0% {
+      background-color: var(--burger-color);
+      transform: rotate(0deg) translateY(0rem);
+      width:100%;
+    }
+    40% {
+      width: 1rem;
+      transform: rotate(0deg) translate(-19.82rem,0rem);
+    }
+    50%{
+      width: 0.1rem;
+      background-color: #79f1a58f;
+      transform: rotate(0deg) translate(-19.82rem,0rem);
+    }
+    70% {
+      width: 0.1rem;
+      background-color: #0e5bad82;
+      transform: rotate(0deg) translate(-19.82rem,10rem);
+    }
+    71% {
+      width: 0.1rem;
+      background-color: #fc31ff37;
+      transform: rotate(-90deg) translate(-20rem,-19.82rem);
+    }
+
+    80% {
+      background-color: #0e5bad77;
+      height: 2px;
+    }
+    82% {
+      width: 10.4rem;
+      height: 2px;
+      background-color: var(--filter-bg);
+      transform: rotate(-90deg) translate(-15rem,-19.82rem);
+
+    }
+    100% {
+      width: 33.8rem;
+      height: 6px;
+      transform: rotate(-90deg) translate(-17rem,-19.75rem) ;
+      // background-color: rgba(0, 0, 0, 0.779);
+      background-color: var(--filter-bg);
+    }
+  }
+
+
   .line-3-x {
     width: 60%;
     height: 1px;

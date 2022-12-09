@@ -170,6 +170,8 @@ export class FilterPaneComponent implements OnInit {
     this.selectedOptions.push(option)
     // TODO - activate class for sunk button
   }
+  console.log(this.selectedOptions);
+
   this.store.dispatch(new UpdateSelectedFilterOptions(this.selectedOptions))
  }
 

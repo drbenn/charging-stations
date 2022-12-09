@@ -21,5 +21,5 @@ export class SetFilterOptions {
 
 export class UpdateSelectedFilterOptions {
   static readonly type = '[Filter Pane] selected filter options to state';
-  constructor(public options: string[]) {}
+  constructor(public selectedOptions: string[]) {}
 }

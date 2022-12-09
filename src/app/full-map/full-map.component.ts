@@ -120,6 +120,7 @@ export class FullMapComponent implements OnInit {
 
     // const filteredStations$: Observable<StationModel[]> = this.store.select((state) => state.appState.filteredStations);
     this.filteredStations$.subscribe((_stations: StationModel[]) => {
+      console.log('filter in map hit');
 
     if (_stations && _stations.length > 0) {
     console.log(_stations);
@@ -140,7 +141,8 @@ export class FullMapComponent implements OnInit {
     iconCreateFunction: this.createClusterIcon()
     });
 
-    if (_stations.length >0) {
+
+    if (_stations && _stations.length) {
       _stations.forEach((station) => {
       let clusterGroup: L.MarkerClusterGroup;
       clusterGroup = clusterStation.addLayer(this.createStationMarker(station));
@@ -190,7 +192,7 @@ export class FullMapComponent implements OnInit {
     // change to reducer
     // this.activeStations.forEach(obj => obj.capacity > maxAmp? maxAmp = obj.capacity : maxAmp = maxAmp)
     // console.log(this.activeStations);
-    if (this.activeStations.length > 0) {
+    if (this.activeStations && this.activeStations.length > 0) {
       const heatTuple = this.activeStations.forEach(obj => {
         let heatTuple;
       // let coords = [obj.lat, obj.lng];
