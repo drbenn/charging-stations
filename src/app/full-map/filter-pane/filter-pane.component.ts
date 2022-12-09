@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { FilterListObject, FilterOptions } from 'src/app/shared/models/app.models';
+import { FilterListObject } from 'src/app/shared/models/app.models';
 import { UpdateSelectedFilterOptions } from 'src/app/shared/state/appState.actions';
 // import { DropDownFilterList } from 'src/app/shared/models/app.models';
 
@@ -41,9 +41,9 @@ export class FilterPaneComponent implements OnInit {
 
 
 
-  connectorOptions: FilterOptions[] = [];
-  networkOptions: FilterOptions[] = [];
-  costOptions: FilterOptions[] = [];
+  connectorOptions: string[] = [];
+  networkOptions: string[] = [];
+  costOptions: string[] = [];
 
   selectedOptions: string[] = [];
 
@@ -69,14 +69,13 @@ export class FilterPaneComponent implements OnInit {
         this.costOptions = _filterOptions.costs;
 
         // Set all filter options as active
-        _filterOptions.connectors.forEach((option) => this.selectedOptions.push(option.name))
-        _filterOptions.networks.forEach((option) => this.selectedOptions.push(option.name))
-        _filterOptions.costs.forEach((option) => this.selectedOptions.push(option.name))
+        _filterOptions.connectors.forEach((option) => this.selectedOptions.push(option))
+        _filterOptions.networks.forEach((option) => this.selectedOptions.push(option))
+        _filterOptions.costs.forEach((option) => this.selectedOptions.push(option))
         console.log(this.selectedOptions);
 
       }
     })
-
 
   }
 

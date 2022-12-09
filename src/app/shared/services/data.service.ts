@@ -9,7 +9,7 @@ import { LoadStations, SetFilterOptions } from '../state/appState.actions';
   })
 
 export class DataService {
-  
+
   constructor(
     private httpClient: HttpClient,
     private store:Store
@@ -35,7 +35,7 @@ export class DataService {
     connects = connects.flat()
     let connectSet = new Set(connects)
     let connectUniqueArray = Array.from(connectSet);
-    
+
 
     let networks = []
     data.forEach((obj) => networks.push(obj.network))

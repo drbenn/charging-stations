@@ -23,6 +23,7 @@ import { AppState } from '../shared/state/appState.state';
 export class FullMapComponent implements OnInit {
 
   @ViewChild( 'map', {static: true}) mapElement: ElementRef;
+  @Select(AppState.filteredStations) filteredStations$:Observable<StationModel[]>;
   _map: L.Map;
   _heatmap: any;
   _stations:any;
@@ -114,10 +115,13 @@ export class FullMapComponent implements OnInit {
 
 
 
-    const stations$: Observable<any> = this.store.select((state) => state.appState.stations);
-    stations$.subscribe((_stations: StationModel[]) => {
+    // const stations$: Observable<any> = this.store.select((state) => state.appState.stations);
+    // stations$.subscribe((_stations: StationModel[]) => {
 
-    if (_stations.length > 0) {
+    // const filteredStations$: Observable<StationModel[]> = this.store.select((state) => state.appState.filteredStations);
+    this.filteredStations$.subscribe((_stations: StationModel[]) => {
+
+    if (_stations && _stations.length > 0) {
     console.log(_stations);
     }
 
