@@ -90,8 +90,8 @@ export class IntroComponent implements OnInit, AfterViewInit{
 
 
     }
-    console.log(event);
-    console.log(boundY);
+    // console.log(event);
+    // console.log(boundY);
 
     // if (jabba[0] === "p_circle_3_1" && inView) {
     //   this.testClass = 'paragraph-circle-active'

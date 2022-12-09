@@ -7,19 +7,14 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class FilterButtonComponent implements OnInit {
   @Input() filterName = '';
-  @Input() active = '';
-  class:string = 'button';
-  constructor() { }
+  isFilterOn:boolean = true;
 
-  ngOnInit(): void {
-    console.log(this.filterName);
-    console.log(this.active);
+  constructor() {}
 
-
-  }
+  ngOnInit(): void {}
 
   toggleClass() {
-    this.class === 'button' ? this.class = 'button-inactive' : this.class = 'button'
+    this.isFilterOn = !this.isFilterOn;
   }
 
 }
