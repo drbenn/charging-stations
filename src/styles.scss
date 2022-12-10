@@ -11,7 +11,7 @@
   --map-tooltip-font: rgb(255, 255, 255);
   --map-tooltip-border:rgba(155, 247, 255, 0.549);
   --map-heatgradient-max:#ff0241;
-  --burger-color:rgb(240, 240, 240);
+  --burger-color:rgb(253, 253, 253);
   --burger-bg:#09313c91;
   --filter-bg:#091214df;
   --filter-button:#042b2c;
@@ -19,6 +19,11 @@
   --filter-button-inactive:#181e20;
   --filter-button-inactive-hover:#2b3538;
   --info-bg: #000a0cf8;
+  --scrollspy-border: rgb(212, 212, 212);
+  --scrollspy-empty: #000000b5;
+  --scrollspy-section: var(--accent-1);
+  --scrollspy-paragraph: #77df95;
+  --scrollspy-vertical-line: rgba(0, 255, 128, 0.278);
 }
 
 body {
