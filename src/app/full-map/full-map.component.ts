@@ -90,7 +90,7 @@ export class FullMapComponent implements OnInit {
 
     };
     // init map
-    let myMap = L.map(this.mapElement.nativeElement, mapOptions).setView([40,-97],4.5);
+    let myMap = L.map(this.mapElement.nativeElement, mapOptions).setView([40,-97], 4.5);
     // new L.Control.Zoom({position: 'bottomleft'}).addTo(myMap);
 
     const southWest = L.latLng(0, -180);
@@ -138,6 +138,10 @@ export class FullMapComponent implements OnInit {
     let clusterStation = L.markerClusterGroup({
     maxClusterRadius: 65,
     disableClusteringAtZoom: 10,
+    polygonOptions: {
+      fillColor:'#0f84a5',
+      color:"#77df94"
+    },
     iconCreateFunction: this.createClusterIcon()
     });
 

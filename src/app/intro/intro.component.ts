@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 
@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
   templateUrl: './intro.component.html',
   styleUrls: ['./intro.component.scss']
 })
-export class IntroComponent implements OnInit, AfterViewInit{
+export class IntroComponent implements OnInit {
   @ViewChild('sec_circle_1', {static: true}) sec_circle_1: ElementRef;
   testClass = 'paragraph-circle'
 
@@ -61,83 +61,135 @@ export class IntroComponent implements OnInit, AfterViewInit{
     })
   }
 
-  ngAfterViewInit(): void {
-    // const threshold = 0.2; // how much % of the element is in view
-    // const observer = new IntersectionObserver(
-    //     (entries) => {
-    //       console.log(entries);
 
-    //         entries.forEach((entry) => {
-    //             if (entry.isIntersecting) {
-    //               console.log('BOOYAH');
-    //               console.log(entry);
-
-
-    //                 // run your animation code here
-    //                 observer.disconnect(); // disconnect if you want to stop observing else it will rerun every time its back in view. Just make sure you disconnect in ngOnDestroy instead
-    //                 console.log('UNDO BOOYAH');
-
-    //             }
-    //         });
-    //     },
-    //     { threshold }
-    // );
-    // observer.observe(this.sec_circle_1.nativeElement);
-  }
 
   onIntersection(event) {
-    // console.log(event[0].target.id);
-    let target = event[0].target.id
+    let eventTarget = event[0].target.id;
+    let className = event[0].target.className;
     let inView = event[0].isIntersecting;
     let ratio = event[0].intersectionRatio;
     let boundY = event[0].boundingClientRect.y
-    let targetStatus = [target, inView]
-    console.log(targetStatus);
+    let targetStatus = [eventTarget, inView]
+    // console.log(targetStatus);
 
-    if (targetStatus[1] === true) {
+
+
+    /**
+     * ADD TO ARRAY - GOOD
+     * when intersection target comes into view, the circle id is pushed to array for tracking,
+     * and those in array will have css class changed to active below
+     */
+    if (inView && !this.scrolledTargets.includes(targetStatus[0])) {
       this.scrolledTargets.push(targetStatus[0]);
+      if (eventTarget === "sec_circle_2") {
+        console.log('adding');
+
+        console.log(event[0]);
+
+      }
       console.log(this.scrolledTargets);
     }
 
+    /**
+     * PROBLEM - RANDOMLY REMOVING FROM ARRAY - FIXED?!
+     * REMOVE FROM ARRAY - GOOD
+     * when intersection target out of view because user has scrolled above target, the circle id
+     * is removed from array so will have css class changed to (in)active
+     */
+    if (!inView && boundY > 100) {
+      let newArray = this.scrolledTargets.filter((item) => item !== eventTarget);
+      this.scrolledTargets = newArray
+      if (eventTarget === "sec_circle_2") {
+        console.log('removing');
+        console.log(event[0]);
+
+      }
+      console.log(this.scrolledTargets);
+
+    }
+
+    // Change class to +"-active" when included array - GOOD
     this.scrolledTargets.forEach((target) => {
       const tLength = target.length;
       const tValue = this.spyClass[`${target}`];
-      console.log(target);
-
-      if (tValue && tValue.length < 17) {
+      /**
+       * magic # 17 is just a count length threshold from 'paragraph-circle' css class
+       * which is longer than 'section-circle'...and when adding '-active' to end both
+       * lengths will be > 17
+       */
+      // if (tValue && tValue.length < 17 && this.scrolledTargets.includes(target)) {
+      if (tValue && tValue.length < 17 && this.scrolledTargets.includes(target)) {
         this.spyClass[`${target}`] += "-active";
       }
+    })
 
-      // if (tValue && tValue.length < 18 && boundY > 0 ) {
+  //  Change class to  remove "-active" when target excluded from array - BAD
+    this.scrolledTargets.forEach((target) => {
+      // const tLength = target.length;
+      let tValue = this.spyClass[`${eventTarget}`];
 
-      // }
+      if (!this.scrolledTargets.includes(eventTarget)) {
+        console.log('SHIT');
+        // console.log(tLength);
+        console.log(eventTarget);
 
-      console.log(this.spyClass);
-      console.log(this.spyClass[`${target}`].subString(tValue[`${target}`].length - 6));
+        console.log(tValue);
+        // removal is registered, now need to remove "-active" from class
+        console.log(this.spyClass[`${target}`]);
+        let classNameLength:number = this.spyClass[`${target}`].length
+        let activeRemovedLength:number = classNameLength - 7 // 7 === "-active".length
+        console.log(classNameLength);
+        let updatedClassName: string = this.spyClass[`${target}`].substring(0,activeRemovedLength)
+        console.log(`updatedClassName: ${updatedClassName}`);
+        this.spyClass[`${eventTarget}`] = updatedClassName;
+
+      }
+
 
 
     })
-    // if (this.scrolledTargets.includes(target) && !inView && boundY > 0) {
-    //   this.testClass = 'paragraph-circle'
-    //   console.log(event);
-    //   console.log(`NOT : ${ratio}`);
-    // }
 
-    // if (target === "p_circle_7_2" && inView) {
-    //   this.testClass = 'paragraph-circle-active'
-    //   console.log(`YES: ${ratio}`);
-    // }
-    // console.log(event);
-    // console.log(boundY);
+      /**
+       * If intersected target is out of view and the viewport is above the id(boundY > 0)
+       * instead of below(user still reading down), then remove "-active" from the targets
+       * class, and remove from the scrolledTargets array
+       */
+      // if (target === "p_circle_3_2") {
+      // console.log('------------------------------------------------------------------');
+      // console.log(target);
+      // console.log(targetStatus[1]);
+      // console.log(boundY);
+      // console.log(ratio);
+      // console.log('------------------------------------------------------------------');
+      // }
 
-    // if (jabba[0] === "p_circle_3_1" && inView) {
-    //   this.testClass = 'paragraph-circle-active'
-    //   console.log(`YES: ${ratio}`);
-    //   // console.log(target[0]);
-    //   // console.log(target[11]);
-    //   // console.log(target[13]);
-    //   console.log(this.testClass.length);
-    // }
+      // if (tValue && tValue.length > 17 && !inView && boundY > 0 && ratio < 0.5) {
+      //   // console.log(`HERROOOO : ${tValue}`);
+      //   // console.log(event[0]);
+      //   const newEndIndex = tValue.length - 7;
+      //   const inactiveStyle:string = this.spyClass[`${target}`].substring(0, newEndIndex)
+      //   // const inactiveStyle:string = activeStyle.substring(0, newEndIndex)
+      //   // console.log(inactiveStyle);
+
+      //   this.spyClass[`${target}`] = inactiveStyle;
+
+
+      // }
+    //   console.log(`TARGET: ${eventTarget}`);
+    //   console.log(this.scrolledTargets);
+
+    //   this.scrolledTargets.forEach((target) => {
+    //     const tLength = target.length;
+    //     const tValue = this.spyClass[`${target}`];
+    //   if (tValue && tValue.length > 17 && !this.scrolledTargets.includes(target)) {
+    //     console.log("WHHHHAAAMMMMOOO");
+
+    //     const newEndIndex = tValue.length - 5;
+    //     const inactiveStyle:string = this.spyClass[`${target}`].substring(0, newEndIndex)
+    //     console.log(`INACTIVE STYLE: ${inactiveStyle}`);
+
+    //   }
+    // })
 
 
   }
