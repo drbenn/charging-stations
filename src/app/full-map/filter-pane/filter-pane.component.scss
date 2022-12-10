@@ -166,7 +166,21 @@
     transform: translateY(0.2rem);
     position: relative;
     z-index: -90;
-    transition: 0.8s ease-in-out;
+    // transition: 0.8s ease-in-out;
+    animation: line-1-horo 0.8s linear;
+  }
+
+  @keyframes line-1-horo {
+    0%{
+      transform: rotate(45deg) translateY(1rem);
+    }
+    60% {
+      transform: translateY(0rem);
+    }
+    100% {
+      transform: translateY(0rem) rotate(0.2rem);
+    }
+
   }
   .line-2-x {
     width: 65%;
@@ -281,7 +295,7 @@
     transform: rotate(-45deg) translateY(0rem);
     position: relative;
     z-index: -90;
-    animation: line-3-anim 1s linear;
+    animation: line-3-anim 0.5s linear;
   }
 
   @keyframes line-3-anim {
