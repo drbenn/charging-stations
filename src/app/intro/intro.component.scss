@@ -22,7 +22,8 @@
   width: 40%;
   min-width: 20rem;
   max-height: 90vh;
-  overflow-y: auto;
+  overflow-y: none;
+  scrollbar-width: none;
   overflow-x: hidden;
   scrollbar-width: none;
   background-color: var(--info-bg);
@@ -30,6 +31,10 @@
   padding: 2rem 4rem 0rem 2rem;
   z-index: 9;
   border-radius: 0.1rem;
+}
+
+.info-container::-webkit-scrollbar {
+  display: none;
 }
 
 .clear-container {

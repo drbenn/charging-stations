@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
-import { connect, Observable } from 'rxjs';
 import { FilterListObject, StationModel } from '../models/app.models';
 import { DataService } from '../services/data.service';
 import { LoadStations, SetFilterOptions, ToggleHeat, ToggleMapView, UpdateSelectedFilterOptions } from './appState.actions';
@@ -22,7 +21,7 @@ export interface AppStateModel {
   defaults: {
     stations: '',
     // filteredStations: '',
-    mapView: true,
+    mapView: false,
     heatMapOn: true,
     filterOptions: {connectors:[], networks:[], costs:[]},
     selectedFilterOptions: ["J1772", "NEMA520","CHADEMO", "J1772COMBO", "NEMA515", "TESLA",  "NEMA1450","Non-Networked","SHELL_RECHARGE","AMPUP","ChargePoint","EVRANGE","POWERFLEX",
