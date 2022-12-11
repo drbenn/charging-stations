@@ -261,8 +261,8 @@ waIntersectionObserver waIntersectionThreshold="0.5">
     </div>
   </div>
 
-  <div class="spy-image-container">
-
+  <div class="spy-image-container" [ngStyle]="{'top':activeImgTop}">
+    <img src={{activeImgPath}} />
   </div>
 
 </div>

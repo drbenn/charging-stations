@@ -1,6 +1,7 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
+import { SpyImage } from '../shared/models/app.models';
 
 //https://stackoverflow.com/questions/70281750/easy-angular-way-to-detect-if-element-is-in-viewport-on-scroll
 
@@ -14,7 +15,10 @@ export class IntroComponent implements OnInit {
   _mapActive:boolean;
   scrolledTargets: string[] = [];
 
-  spyClass = {
+  activeImgPath:string = '../../assets/img/intro/scroll-img-1.jpg';
+  activeImgTop:string = '10%';
+
+  spyClass:any = {
     sec_circle_1:'section-circle',
     sec_circle_2:'section-circle',
     p_circle_2_1:'paragraph-circle',
@@ -42,6 +46,49 @@ export class IntroComponent implements OnInit {
     p_circle_8_3:'paragraph-circle',
   }
 
+  spyImg: SpyImage[] = [
+    {
+      order:"1",
+      path:'../../assets/img/intro/scroll-img-1.jpg',
+      topPosition: '10%',
+    },
+    {
+      order:"2",
+      path:'../../assets/img/intro/scroll-img-2.jpg',
+      topPosition: '15%',
+    },
+    {
+      order:"3",
+      path:'../../assets/img/intro/scroll-img-3.jpg',
+      topPosition: '20%',
+    },
+    {
+      order:"4",
+      path:'../../assets/img/intro/scroll-img-4.jpg',
+      topPosition: '25%',
+    },
+    {
+      order:"5",
+      path:'../../assets/img/intro/scroll-img-5.jpg',
+      topPosition: '30%',
+    },
+    {
+      order:"6",
+      path:'../../assets/img/intro/scroll-img-6.jpg',
+      topPosition: '35%',
+    },
+    {
+      order:"7",
+      path:'../../assets/img/intro/scroll-img-7.jpg',
+      topPosition: '40%',
+    },
+    {
+      order:"8",
+      path:'../../assets/img/intro/scroll-img-8.jpg',
+      topPosition: '45%',
+    },
+  ]
+
   constructor(private store: Store) { }
 
   ngOnInit(): void {
@@ -67,6 +114,7 @@ export class IntroComponent implements OnInit {
     this.intersectTargetRemoveFromArray(inView,eventTarget,boundY)
     this.scrollspyClassToActive();
     this.scrollspyClassRemoveActive(eventTarget);
+    this.scrollspyImageChange(targetStatus);
   }
 
 
@@ -129,6 +177,50 @@ export class IntroComponent implements OnInit {
             this.spyClass[`${eventTarget}`] = inactiveParagraph;
       }
     })
+  }
+
+
+  scrollspyImageChange(targetStatus) {
+    if (targetStatus[0] === 'sec_circle_1' && targetStatus[1] === true) {
+      const img = this.spyImg[0];
+      this.activeImgPath = img.path;
+      this.activeImgTop = img.topPosition;
+    }
+    if (targetStatus[0] === 'sec_circle_2' && targetStatus[1] === true) {
+      const img = this.spyImg[1];
+      this.activeImgPath = img.path;
+      this.activeImgTop = img.topPosition;
+    }
+    if (targetStatus[0] === 'sec_circle_3' && targetStatus[1] === true) {
+      const img = this.spyImg[2];
+      this.activeImgPath = img.path;
+      this.activeImgTop = img.topPosition;
+    }
+    if (targetStatus[0] === 'sec_circle_4' && targetStatus[1] === true) {
+      const img = this.spyImg[3];
+      this.activeImgPath = img.path;
+      this.activeImgTop = img.topPosition;
+    }
+    if (targetStatus[0] === 'sec_circle_5' && targetStatus[1] === true) {
+      const img = this.spyImg[4];
+      this.activeImgPath = img.path;
+      this.activeImgTop = img.topPosition;
+    }
+    if (targetStatus[0] === 'sec_circle_6' && targetStatus[1] === true) {
+      const img = this.spyImg[5];
+      this.activeImgPath = img.path;
+      this.activeImgTop = img.topPosition;
+    }
+    if (targetStatus[0] === 'sec_circle_7' && targetStatus[1] === true) {
+      const img = this.spyImg[6];
+      this.activeImgPath = img.path;
+      this.activeImgTop = img.topPosition;
+    }
+    if (targetStatus[0] === 'sec_circle_8' && targetStatus[1] === true) {
+      const img = this.spyImg[7];
+      this.activeImgPath = img.path;
+      this.activeImgTop = img.topPosition;
+    }
   }
 
 }

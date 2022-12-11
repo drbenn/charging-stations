@@ -23,7 +23,8 @@ export interface FilterListObject {
   costs: string[],
 }
 
-// export interface FilterOptions {
-//   name: string;
-//   active: boolean;
-// }
+export interface SpyImage {
+  order:string,
+  path:string,
+  topPosition: string,
+}
