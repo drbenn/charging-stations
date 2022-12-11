@@ -60,32 +60,43 @@ export class IntroComponent implements OnInit {
   onIntersection(event) {
     let eventTarget = event[0].target.id;
     let inView = event[0].isIntersecting;
-    let ratio = event[0].intersectionRatio;
     let boundY = event[0].boundingClientRect.y
     let targetStatus = [eventTarget, inView]
-    let yLag = boundY + 200;
-    console.log(event[0]);
 
-    /**
-     * ADD TO ARRAY
-     * when intersection target comes into view, the circle id is pushed to array for tracking,
-     * and those in array will have css class changed to active below
-     */
+    this.intersectTargetToArray(inView,targetStatus)
+    this.intersectTargetRemoveFromArray(inView,eventTarget,boundY)
+    this.scrollspyClassToActive();
+    this.scrollspyClassRemoveActive(eventTarget);
+  }
+
+
+  /**
+  * ADD TO ARRAY
+  * when intersection target comes into view, the circle id is pushed to array for tracking,
+  * and those in array will have css class changed to active below
+  */
+  intersectTargetToArray(inView,targetStatus) {
     if (inView && !this.scrolledTargets.includes(targetStatus[0])) {
       this.scrolledTargets.push(targetStatus[0]);
     }
+  }
 
-    /**
-     * REMOVE FROM ARRAY
-     * when intersection target out of view because user has scrolled above target, the circle id
-     * is removed from array so will have css class changed to (in)active
-     */
+
+  /**
+   * REMOVE FROM ARRAY
+   * when intersection target out of view because user has scrolled above target, the circle id
+   * is removed from array so will have css class changed to (in)active
+   */
+  intersectTargetRemoveFromArray(inView,eventTarget,boundY) {
     if (!inView && boundY > 100) {
       let newArray = this.scrolledTargets.filter((item) => item !== eventTarget);
       this.scrolledTargets = newArray
     }
+  }
 
-    // Change class to +"-active" when included array
+
+  // Change class to +"-active" when included array
+  scrollspyClassToActive() {
     this.scrolledTargets.forEach((target) => {
       const tLength = target.length;
       const tValue = this.spyClass[`${target}`];
@@ -99,27 +110,25 @@ export class IntroComponent implements OnInit {
         this.spyClass[`${target}`] += "-active";
       }
     })
+  }
 
 
-  //  Change class to  remove "-active" when target excluded from array - BAD
+  // Change class to  remove "-active" when target excluded from array
+  scrollspyClassRemoveActive(eventTarget) {
     this.scrolledTargets.forEach((target) => {
       const inactiveSection = 'section-circle';
       const inactiveParagraph = 'paragraph-circle'
 
       if (!this.scrolledTargets.includes(eventTarget) &&
           this.spyClass[`${eventTarget}`] ==='section-circle-active' ) {
-
             this.spyClass[`${eventTarget}`] = inactiveSection;
       }
 
       if (!this.scrolledTargets.includes(eventTarget) &&
           this.spyClass[`${eventTarget}`] ==='paragraph-circle-active' ) {
-
             this.spyClass[`${eventTarget}`] = inactiveParagraph;
       }
     })
-
-
   }
 
 }

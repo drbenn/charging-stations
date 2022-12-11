@@ -123,6 +123,15 @@ a:hover {
   position: absolute;
   top:6%;
   left:18.5%;
+  box-shadow: 0 0 6px #c0eeff;
+  animation: glowing-line 3s infinite;
+}
+
+
+@keyframes glowing-line {
+  0% { box-shadow: 0 0 6px #c0eeff; }
+  75% { box-shadow: 0 0 8px #d5f4ff; }
+  100% { box-shadow: 0 0 6px #cdf2ff; }
 }
 
 .circle-cluster {
@@ -152,6 +161,7 @@ a:hover {
   border-radius: 10rem;
   height: 0.50rem;
   width: 0.55rem;
+  animation: glowing 1s infinite;
 }
 
 .paragraph-circle {
@@ -172,4 +182,25 @@ a:hover {
   height: 0.4rem;
   width: 0.4rem;
   margin-left: 0.1rem;
+  animation: glowing 3s infinite;
+}
+
+@keyframes glowing {
+  0% { box-shadow: 0 0 1px #c0eeff3f; }
+  75% { box-shadow: 0 0 2px #7fff9f36; }
+  100% { box-shadow: 0 0 1px #cdf2ff21; }
+}
+
+
+.spy-image-container {
+  height:20rem;
+  width: 40vw;
+  min-width: 22rem;
+  border: 2px solid hotpink;
+  background-color: red;
+
+  position: absolute;
+  top: 10%; // range of 10 to 55 %
+  right: 10%;
+
 }
