@@ -9,6 +9,40 @@
   background-color: rgba(245, 245, 245, 0.245);
 }
 
+.info-down-frame {
+//  border: 1px solid red;
+ height: 50px;
+ width: 41%;
+ min-width: 25.85rem;
+ position: absolute;
+ bottom: 1.82%;
+ display: flex;
+ flex-wrap: nowrap;
+ justify-content: center;
+ align-items: center;
+ transform: translate(1rem,0rem);
+background:linear-gradient(90deg, #000a0c6b 0%, #000a0cf8 2%,#000a0cf8 95%, #000a0c4b 100%);
+}
+
+.down-arrow-container {
+  height: 2rem;
+  width: 2rem;
+  // border: 1px solid red;
+  transform: translateX(-2rem);
+  transition: all 0.8s ease-in;
+
+  img {
+    object-fit: contain;
+    object-position:center;
+    width: 100%;
+    height: fit-content;
+    transition: all 0.3s ease-in;
+  }
+  img:hover {
+    filter: brightness(75%);
+    transition: all 0.3s ease-in;
+  }
+}
 .info-container {
   position: rel;
   display: flex;
@@ -28,7 +62,7 @@
   scrollbar-width: none;
   background-color: var(--info-bg);
   color: white;
-  padding: 2rem 4rem 0rem 2rem;
+  padding: 2rem 4rem 4rem 2rem;
   z-index: 9;
   border-radius: 0.1rem;
 }
@@ -100,11 +134,12 @@ a:hover {
 .spy-observer-container {
   background-color: rgba(0, 0, 0, 0.175);
   display: flex;
+  border-radius: 20px;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
   flex-wrap: nowrap;
-  padding: 0.6rem;
+  padding: 0.8rem 0.6rem;
   transform: all 1s ease-in;
   height: 45%;
   position: absolute;
@@ -116,7 +151,7 @@ a:hover {
 
 
 .spy-vertical-line {
-  height: 94%;
+  height: 92%;
   width: 0.1rem;
   background-color: var(--scrollspy-vertical-line);
   position: absolute;

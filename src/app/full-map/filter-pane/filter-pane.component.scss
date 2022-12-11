@@ -14,7 +14,7 @@
   font-family: 'Barlow Condensed', sans-serif;
   }
 
-.filter-pane-overflow-conatiner-open{
+.filter-pane-overflow-conatiner-open {
   overflow: hidden;
   height:32rem;
   width: fit-content;
@@ -46,8 +46,9 @@
   }
 }
 
-.filter-pane-overflow-conatiner-closed{
+.filter-pane-overflow-container-closed {
   height:32rem;
+  width: 0rem;
   overflow: hidden;
   animation: overflow-closed 0.6s linear;
 }
@@ -276,10 +277,13 @@
       background-color: var(--filter-bg);
       transform: rotate(-90deg) translate(-15rem,-19.82rem);
     }
+    90% {
+      background-color: rgba(136, 84, 119, 0.38);
+    }
     100% {
       width: 33.8rem;
       height: 6px;
-      transform: rotate(-90deg) translate(-17rem,-19.75rem) ;
+      transform: rotate(-90deg) translate(-17rem,-18.5rem) ;
       background-color: var(--filter-bg);
     }
   }

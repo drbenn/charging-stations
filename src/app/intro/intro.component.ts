@@ -17,6 +17,7 @@ export class IntroComponent implements OnInit {
 
   activeImgPath:string = '../../assets/img/intro/scroll-img-1.jpg';
   activeImgTop:string = '10%';
+  downArrowOn:boolean = true;
 
   spyClass:any = {
     sec_circle_1:'section-circle',
@@ -115,6 +116,7 @@ export class IntroComponent implements OnInit {
     this.scrollspyClassToActive();
     this.scrollspyClassRemoveActive(eventTarget);
     this.scrollspyImageChange(targetStatus);
+    this.downArrowStatus(eventTarget);
   }
 
 
@@ -220,6 +222,16 @@ export class IntroComponent implements OnInit {
       const img = this.spyImg[7];
       this.activeImgPath = img.path;
       this.activeImgTop = img.topPosition;
+    }
+  }
+
+
+  downArrowStatus(eventTarget:string) {
+    if (eventTarget === "down_arrow_off") {
+      this.downArrowOn = false;
+    }
+    if (eventTarget === "down_arrow_on") {
+      this.downArrowOn = true;
     }
   }
 

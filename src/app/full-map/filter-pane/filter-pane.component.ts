@@ -66,7 +66,7 @@ export class FilterPaneComponent implements OnInit {
   setBurgerClass(event:any) {
     const nodeList = Array(event.target.childNodes)[0];
     this.burgerContainer === "close-filter-burger" ? this.burgerContainer = "open-filter-burger" : this.burgerContainer = "close-filter-burger"
-    this.filterPaneOverflow === "filter-pane-overflow-conatiner-closed" ?  this.filterPaneOverflow = "filter-pane-overflow-conatiner-open" :  this.filterPaneOverflow = "filter-pane-overflow-conatiner-closed"
+    this.filterPaneOverflow === "filter-pane-overflow-container-closed" ?  this.filterPaneOverflow = "filter-pane-overflow-container-open" :  this.filterPaneOverflow = "filter-pane-overflow-container-closed"
 
     nodeList.forEach((nodeItem:any) => {
       const clss:string = nodeItem.className;
