@@ -70,20 +70,19 @@ export class AppState {
         // let free = station.pricing.search("Free") ? 'Free' : 'Pay';
         // console.log('free?');
         // console.log(free);
-        // SHIT WORKS TO FILTER NETWORK
+
         // let shit = state.selectedFilterOptions.some(sOption => station.network.includes(sOption))
         // let fuck = state.selectedFilterOptions.some(sOption => station.connectorTypes.forEach(connector => connector.includes(sOption)))
 
-      //   let shit = this.networkSubFilter(station,state.selectedFilterOptions);
-      //   console.log(shit);
-      //  return shit}
+        // let connectorFilter = this.connectorSubFilter(station, state.selectedFilterOptions);
+        // return connectorFilter;}
+        // NETWORK FILTER - GOOD!
+        let networkFilter = this.networkSubFilter(station,state.selectedFilterOptions);
+       return networkFilter}
+        ///////////////////////
 
-
-
-        let twat = this.costSubFilter(station,state.selectedFilterOptions);
-
-        return twat}
-
+        // let twat = this.costSubFilter(station,state.selectedFilterOptions);
+        // return twat}
         )
 
 
@@ -167,12 +166,7 @@ export class AppState {
 
       // return  selectedFilters.some(selected => station.connectorTypes.includes(selected))
 //   }
-  static networkSubFilter(station:StationModel, selectedFilters:string[]):boolean {
-    // return  selectedFilters.some(selected => station.network.includes(selected))
-    // console.log("FUCKING ANYTHING");
 
-    return selectedFilters.some(sOption => station.network.includes(sOption))
-  }
 
   static costSubFilter(station:StationModel, selectedFilters:string[]) {
     // return  selectedFilters.some(selected => station.network.includes(selected))
@@ -194,8 +188,31 @@ export class AppState {
     } else {
       return !station
     }
+  }
 
 
+  static connectorSubFilter(station:StationModel, selectedFilters:string[]):boolean {
+    let connectors: string[] = station.connectorTypes;
+    // console.log(connectors);
+    let shazam = connectors.filter(connector => selectedFilters.includes(connector));
+    console.log(shazam[0]);
 
+    if (shazam !== undefined)  {
+      return true
+     } else {
+
+     return false}
+    // console.log(shazam);
+
+    // return true
+    // return connectors.forEach((connector) => selectedFilters.some(sOption => connector.includes(sOption)));
+    // return selectedFilters.some(sOption => connectors.forEach(connector => connector.includes(sOption)));
+  }
+
+  static networkSubFilter(station:StationModel, selectedFilters:string[]):boolean {
+    // return  selectedFilters.some(selected => station.network.includes(selected))
+    // console.log("FUCKING ANYTHING");
+
+    return selectedFilters.some(sOption => station.network.includes(sOption))
   }
 }
