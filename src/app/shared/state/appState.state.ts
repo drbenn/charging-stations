@@ -38,12 +38,38 @@ export class AppState {
   ) {}
 
 
+  // //      let activeFilters:string[] = state.selectedFilterOptions;
+  // let connectorType: string[] = station.connectorTypes;
+
   @Selector()
   static filteredStations(state:AppStateModel) {
     // console.log(state.selectedFilterOptions);
     if (state.selectedFilterOptions.length === 20) {
       return state.stations;
     }
+    else {
+      // console.log("else");
+      // console.log(state.selectedFilterOptions);
+
+      const filteredStations: StationModel[] = state.stations.filter((station) => {
+        let activeFilters:string[] = state.selectedFilterOptions;
+        let connectorTypes: string[] = station.connectorTypes;
+        let network: string = station.network;
+        let networkFilter = this.networkSubFilter(network,activeFilters);
+        // console.log(networkFilter);
+
+        return networkFilter
+        let connectorFilter = this.connectorSubFilter(connectorTypes, activeFilters);
+        // console.log(connectorFilter);
+
+        // return connectorFilter;
+      })
+
+      // console.log(filteredStations);
+
+      return filteredStations;
+    }
+
 // some determines if at least 1 item in an array meets a condition
 // so station.connectorTypes meets condition of being included in selectedStations array
     // if (state.selectedFilterOptions.length < 20) {
@@ -61,11 +87,7 @@ export class AppState {
     //   return newStations;
 
     // }
-    else {
-      console.log("else");
-      console.log(state.selectedFilterOptions);
 
-      const filteredStations: StationModel[] = state.stations.filter((station) => {
         // let free = station.pricing.search("Free") ? 'Free' : 'Pay';
         // console.log('free?');
         // console.log(free);
@@ -76,19 +98,18 @@ export class AppState {
         // let connectorFilter = this.connectorSubFilter(station, state.selectedFilterOptions);
         // return connectorFilter;}
         // NETWORK FILTER - GOOD!
-        let networkFilter = this.networkSubFilter(station,state.selectedFilterOptions);
-       return networkFilter}
+
         ///////////////////////
 
         // let twat = this.costSubFilter(station,state.selectedFilterOptions);
         // return twat}
-        )
+    //     )
 
 
-      console.log(filteredStations);
+    //   console.log(filteredStations);
 
-      return filteredStations;
-    }
+    //   return filteredStations;
+    // }
 
 
 
@@ -189,28 +210,45 @@ export class AppState {
   }
 
 
-  static connectorSubFilter(station:StationModel, selectedFilters:string[]):boolean {
-    let connectors: string[] = station.connectorTypes;
-    // console.log(connectors);
-    let shazam = connectors.filter(connector => selectedFilters.includes(connector));
-    console.log(shazam[0]);
+  // static connectorSubFilter(station:StationModel, selectedFilters:string[]):boolean {
+  //   let connectors: string[] = station.connectorTypes;
+  //   // console.log(connectors);
+  //   let shazam = connectors.filter(connector => selectedFilters.includes(connector));
+  //   console.log(shazam[0]);
 
-    if (shazam !== undefined)  {
-      return true
-     } else {
+  //   if (shazam !== undefined)  {
+  //     return true
+  //    } else {
 
-     return false}
-    // console.log(shazam);
+  //    return false}
+  //   // console.log(shazam);
 
-    // return true
-    // return connectors.forEach((connector) => selectedFilters.some(sOption => connector.includes(sOption)));
-    // return selectedFilters.some(sOption => connectors.forEach(connector => connector.includes(sOption)));
+  //   // return true
+  //   // return connectors.forEach((connector) => selectedFilters.some(sOption => connector.includes(sOption)));
+  //   // return selectedFilters.some(sOption => connectors.forEach(connector => connector.includes(sOption)));
+  // }
+
+  static networkSubFilter(network:string, activeFilters:string[]):boolean {
+    // console.log(network);
+    // console.log(typeof network);
+
+
+    return activeFilters.some(sFilter => network.includes(sFilter))
   }
 
-  static networkSubFilter(station:StationModel, selectedFilters:string[]):boolean {
-    // return  selectedFilters.some(selected => station.network.includes(selected))
-
-
-    return selectedFilters.some(sOption => station.network.includes(sOption))
+  static connectorSubFilter(connectorTypes:string[], activeFilters:string[]): boolean {
+    let bool:boolean = false;
+    activeFilters.forEach((filter) => {
+      connectorTypes.forEach((connector) => {
+        if (connector === filter) {
+          bool = true;
+        }
+      })
+      // if (connectorTypes.includes(filter)) {
+      //   bool = true
+      // }
+    })
+    return bool;
+    // return activeFilters.some(sFilter => connectorTypes.includes(sFilter))
   }
 }
