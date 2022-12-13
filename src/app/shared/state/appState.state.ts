@@ -50,7 +50,6 @@ export class AppState {
     //   let newStations = state.stations.filter((station) => {
     //     // return station.network === "AMPUP"
     //       // if (station.connectorTypes.includes('TESLA')) {
-    //       //   console.log('fuck you');
     //       //   return true
     //       // }
     //       console.log(station.connectorTypes);
@@ -71,8 +70,8 @@ export class AppState {
         // console.log('free?');
         // console.log(free);
 
-        // let shit = state.selectedFilterOptions.some(sOption => station.network.includes(sOption))
-        // let fuck = state.selectedFilterOptions.some(sOption => station.connectorTypes.forEach(connector => connector.includes(sOption)))
+        // let stuff = state.selectedFilterOptions.some(sOption => station.network.includes(sOption))
+        // let heck = state.selectedFilterOptions.some(sOption => station.connectorTypes.forEach(connector => connector.includes(sOption)))
 
         // let connectorFilter = this.connectorSubFilter(station, state.selectedFilterOptions);
         // return connectorFilter;}
@@ -170,7 +169,6 @@ export class AppState {
 
   static costSubFilter(station:StationModel, selectedFilters:string[]) {
     // return  selectedFilters.some(selected => station.network.includes(selected))
-    console.log("FUCKING ANYTHING");
     let cost = station.pricing.search("Free") ? 'Free' : 'Pay';
 
     const both = selectedFilters.includes("Free") && selectedFilters.includes("Pay");
@@ -211,7 +209,7 @@ export class AppState {
 
   static networkSubFilter(station:StationModel, selectedFilters:string[]):boolean {
     // return  selectedFilters.some(selected => station.network.includes(selected))
-    // console.log("FUCKING ANYTHING");
+
 
     return selectedFilters.some(sOption => station.network.includes(sOption))
   }
