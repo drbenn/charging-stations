@@ -12,7 +12,7 @@ import { ToggleHeat, ToggleMapView } from '../shared/state/appState.actions';
 export class NavComponent implements OnInit {
   //sound props
   audio: any;
-  musicPath: string = "/assets/sound/music.webm";
+  musicPath: string = "./assets/sound/music.webm";
   soundImgName: string = "audio-3-off";
 
   //heat prop

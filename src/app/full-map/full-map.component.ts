@@ -247,7 +247,7 @@ export class FullMapComponent implements OnInit {
     // Or use icon image
     // iconsize hieght is 1.617 ratio of width
     let imgIcon = L.icon({
-    iconUrl: '../../assets/img/marker-2.png',
+    iconUrl: './assets/img/marker-2.png',
     iconSize:[15,24.25],
     shadowSize: [50,50],
     iconAnchor: [0,40],

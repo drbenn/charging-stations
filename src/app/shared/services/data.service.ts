@@ -17,7 +17,7 @@ export class DataService {
 
 
   public initData() {
-    const jsonFile = '../../../assets/data/stationData.json';
+    const jsonFile = './assets/data/stationData.json';
     const jsonData = this.httpClient.get(jsonFile).subscribe((data)=> {
       this.store.dispatch(new LoadStations(data));
       this.getFilterOptions(data);

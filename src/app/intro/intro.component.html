@@ -4,7 +4,7 @@ waIntersectionObserver waIntersectionThreshold="0.5">
     <div class="info-container"  [ngStyle]="{'z-index':!_mapActive ? 6 : 1}">
       <div class="info-down-frame">
         <div class="down-arrow-container" *ngIf="downArrowOn">
-          <img src="../../assets/img/icons8-double-down-100.png" />
+          <img src="./assets/img/icons8-double-down-100.png" />
         </div>
       </div>
       <span  id="down_arrow_on" (waIntersectionObservee)="onIntersection($event)"></span>

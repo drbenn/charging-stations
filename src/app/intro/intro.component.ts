@@ -15,7 +15,7 @@ export class IntroComponent implements OnInit {
   _mapActive:boolean;
   scrolledTargets: string[] = [];
 
-  activeImgPath:string = '../../assets/img/intro/scroll-img-1.jpg';
+  activeImgPath:string = './assets/img/intro/scroll-img-1.jpg';
   activeImgTop:string = '10%';
   downArrowOn:boolean = true;
 
@@ -50,42 +50,42 @@ export class IntroComponent implements OnInit {
   spyImg: SpyImage[] = [
     {
       order:"1",
-      path:'../../assets/img/intro/scroll-img-1.jpg',
+      path:'./assets/img/intro/scroll-img-1.jpg',
       topPosition: '10%',
     },
     {
       order:"2",
-      path:'../../assets/img/intro/scroll-img-2.jpg',
+      path:'./assets/img/intro/scroll-img-2.jpg',
       topPosition: '15%',
     },
     {
       order:"3",
-      path:'../../assets/img/intro/scroll-img-3.jpg',
+      path:'./assets/img/intro/scroll-img-3.jpg',
       topPosition: '20%',
     },
     {
       order:"4",
-      path:'../../assets/img/intro/scroll-img-4.jpg',
+      path:'./assets/img/intro/scroll-img-4.jpg',
       topPosition: '25%',
     },
     {
       order:"5",
-      path:'../../assets/img/intro/scroll-img-5.jpg',
+      path:'./assets/img/intro/scroll-img-5.jpg',
       topPosition: '30%',
     },
     {
       order:"6",
-      path:'../../assets/img/intro/scroll-img-6.jpg',
+      path:'./assets/img/intro/scroll-img-6.jpg',
       topPosition: '35%',
     },
     {
       order:"7",
-      path:'../../assets/img/intro/scroll-img-7.jpg',
+      path:'./assets/img/intro/scroll-img-7.jpg',
       topPosition: '40%',
     },
     {
       order:"8",
-      path:'../../assets/img/intro/scroll-img-8.jpg',
+      path:'./assets/img/intro/scroll-img-8.jpg',
       topPosition: '45%',
     },
   ]
