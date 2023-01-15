@@ -21,7 +21,7 @@ export interface AppStateModel {
   defaults: {
     stations: '',
     // filteredStations: '',
-    mapView: false,
+    mapView: true,
     heatMapOn: true,
     filterOptions: {connectors:[], networks:[], costs:[]},
     selectedFilterOptions: ["J1772", "NEMA520","CHADEMO", "J1772COMBO", "NEMA515", "TESLA",  "NEMA1450","Non-Networked","SHELL_RECHARGE","AMPUP","ChargePoint","EVRANGE","POWERFLEX",
@@ -43,6 +43,7 @@ export class AppState {
 
   @Selector()
   static filteredStations(state:AppStateModel) {
+    let freeStations = [];
     // console.log(state.selectedFilterOptions);
     if (state.selectedFilterOptions.length === 20) {
       return state.stations;
@@ -51,21 +52,51 @@ export class AppState {
       // console.log("else");
       // console.log(state.selectedFilterOptions);
 
+
+
+
       const filteredStations: StationModel[] = state.stations.filter((station) => {
         let activeFilters:string[] = state.selectedFilterOptions;
         let connectorTypes: string[] = station.connectorTypes;
         let network: string = station.network;
+        let price: string = '';
+        station.pricing ? price = station.pricing.toLowerCase() : price = 'n/a';
+
         let networkFilter = this.networkSubFilter(network,activeFilters);
+        let priceFilter = this.priceSubFilter(price, activeFilters);
         // console.log(networkFilter);
 
-        return networkFilter
-        let connectorFilter = this.connectorSubFilter(connectorTypes, activeFilters);
+        // Any true for any filter will return the station for view in map
+        // for each return true || true || true
+
+
+        // console.log(station.pricing?.toLowerCase());
+
+        // if (station.pricing?.toLowerCase().includes('free')) {
+        //   console.log('add one for the big guy');
+        //   freeStations.push(station);
+        // }
+
+
+
+
+
+
+
+
+
+
+
+
+        return networkFilter && priceFilter;
+        // let connectorFilter = this.connectorSubFilter(connectorTypes, activeFilters);
         // console.log(connectorFilter);
 
         // return connectorFilter;
       })
 
       // console.log(filteredStations);
+      console.log(freeStations);
 
       return filteredStations;
     }
@@ -250,5 +281,20 @@ export class AppState {
     })
     return bool;
     // return activeFilters.some(sFilter => connectorTypes.includes(sFilter))
+  }
+
+  static priceSubFilter( price: string, activeFilters: string[]) {
+    let isFree: boolean = price.includes('free');
+    let isFreeSelected: boolean = activeFilters.includes('Free');
+    let isPaySelected: boolean = activeFilters.includes('Pay');
+    let shouldInclude: boolean;
+
+    if (isFreeSelected && isFree || isPaySelected && !isFree) {
+      shouldInclude = true;
+    }
+    if (!isFreeSelected && !isPaySelected) {
+      shouldInclude = false;
+    }
+    return shouldInclude;
   }
 }
