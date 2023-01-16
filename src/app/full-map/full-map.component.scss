@@ -94,8 +94,10 @@
   height: 0px;
 }
 
-// .leaflet-container a.leaflet-popup-close-button {
-// }
+.leaflet-container a.leaflet-popup-close-button {
+  color: var(--map-tooltip-font);
+  transform: translateY(160%);
+}
 
 // clustericon!
 .leaflet-div-icon {
